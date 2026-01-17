@@ -1,0 +1,35 @@
+{
+    // https://code.visualstudio.com/docs/devcontainers/tutorial
+    // https://containers.dev/implementors/json_reference/
+    // https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container
+    // https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container
+    "name": "RustPlayground",
+    "image": "rust-playground:latest",
+    "privileged": true,
+    "runArgs": [
+        "--rm",
+        "--network=host"
+    ],
+    "remoteUser": "root",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/root/rust-playground,type=bind",
+    "workspaceFolder": "/root/rust-playground",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "tamasfe.even-better-toml",
+                "fill-labs.dependi",
+                "usernamehw.errorlens"
+            ],
+            "settings": {
+                "[rust]": {
+                    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+                    "editor.formatOnSave": true
+                },
+                // Choose clippy as linter (it is a superset of rustc linters)
+                "rust-analyzer.check.command": "clippy"
+            }
+        }
+    }
+}
