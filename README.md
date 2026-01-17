@@ -37,7 +37,7 @@ docker build \
 
 ## 2. Run the Docker container
 
-The following command can be used to run a container from the image we built in the previous section. We can substitute `rust_playground:latest` with `rust_playground:${RUST_VERSION}` if we want to run a container from a different image (always assuming that we already have that image locally).
+The following command can be used to run a container from the image we built in the previous section. We can substitute `rust_playground:${RUST_VERSION}` in the following command if we want to use a different tag (for instance `rust_playground:latest`).
 
 ```bash
 docker run \
@@ -47,9 +47,14 @@ docker run \
     --network=host \
     -v .:/root/rust_playground \
     -w /root/rust_playground \
-    rust_playground:latest \
+    rust_playground:${RUST_VERSION} \
     bash
 ```
+
+> If we want to launch a complete development environment using Visual Studio Code instead, remember to change the image field accordingly in the `.devcontainer/devcontainer.json` file:
+> ```
+> "image": "rust_playground:1.92.0",
+> ```
 
 ## 3. Rust project development
 
