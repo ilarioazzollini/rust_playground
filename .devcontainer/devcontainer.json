@@ -4,15 +4,15 @@
     // https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container
     // https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container
     "name": "RustPlayground",
-    "image": "rust-playground:latest",
+    "image": "rust_playground:latest",
     "privileged": true,
     "runArgs": [
         "--rm",
         "--network=host"
     ],
     "remoteUser": "root",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/root/rust-playground,type=bind",
-    "workspaceFolder": "/root/rust-playground",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/root/rust_playground,type=bind",
+    "workspaceFolder": "/root/rust_playground",
     "customizations": {
         "vscode": {
             "extensions": [
