@@ -6,7 +6,7 @@ All the terminal commands in this readme should be launched from the root direct
 git clone https://github.com/ilarioazzollini/rust-playground.git && cd rust-playground
 ```
 
-## Build the Docker container image
+## 1. Build the Docker container image
 
 First of all, we can **optionally** choose a specific Rust version we want to work with:
 
@@ -35,7 +35,7 @@ docker build \
     .
 ```
 
-## Run the Docker container
+## 2. Run the Docker container
 
 The following command can be used to run a container from the image we built in the previous section. We can substitute `rust-playground:latest` with `rust-playground:${RUST_VERSION}` if we want to run a container from a different image (always assuming that we already have that image locally).
 
@@ -51,10 +51,28 @@ docker run \
     bash
 ```
 
-## Rust project development
+## 3. Rust project development
 
-Assuming that we are in a terminal inside a running Docker container (as explained in the previous section), we can build our current version of the project by:
+In this section we are going to assume that we are in a terminal inside a running Docker container (as explained in the previous section).
+
+### 3.1 Build the entire project
+
+We can build our current version of the whole project (both the lib and all the available binaries) by:
 
 ```bash
 cargo build
+```
+
+### 3.2 Run a binary executable application
+
+We can run the main binary executable (associated to `src/main.rs`) by simply:
+
+```bash
+cargo run --bin rust-playground
+```
+
+In a similar way, we can run any other binary executable application. For instance, we can run the one associated with the source file `src/bin/hello_world.rs` by:
+
+```bash
+cargo run --bin hello_world
 ```
