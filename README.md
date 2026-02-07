@@ -81,3 +81,41 @@ In a similar way, we can run any other binary executable application. For instan
 ```bash
 cargo run --bin hello_world
 ```
+
+### 3.3 Run the tests
+
+Run both unit tests and integration tests...
+
+```bash
+cargo test
+```
+
+### 3.4 Generate the docs
+
+Generate and immediately open the documentation
+
+```bash
+cargo doc
+```
+
+### 3.5 The markdown book
+
+In order to create our book the first time
+
+```bash
+mkdir docs
+cd docs
+mdbook init
+```
+
+Build both the book and docs
+
+```bash
+cd rust_playground
+cargo doc
+cp -r target/doc docs/doc
+cd docs
+mdbook build
+```
+
+And then open `docs/book/index.html`.

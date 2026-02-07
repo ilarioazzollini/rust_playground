@@ -1,0 +1,7 @@
+[book]
+title = "Rust Playground"
+authors = ["ilarioazzollini"]
+language = "en"
+
+[output.html]
+mathjax-support = true

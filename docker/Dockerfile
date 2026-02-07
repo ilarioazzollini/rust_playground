@@ -46,3 +46,6 @@ RUN rustup component add \
     rustfmt \
     clippy \
     rust-analyzer
+
+# Install crates
+RUN cargo install mdbook
