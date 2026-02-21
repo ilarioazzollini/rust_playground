@@ -108,14 +108,23 @@ cd docs
 mdbook init
 ```
 
-Build both the book and docs
+Build both the book and docs, and then serve them
 
 ```bash
 cd rust_playground
+rm -rf docs/book
 cargo doc
-cp -r target/doc docs/doc
-cd docs
-mdbook build
+mdbook build ./docs
+cp -r target/doc docs/book/doc
+python3 -m http.server 8080 -d /root/rust_playground/docs/book
 ```
 
 And then open `docs/book/index.html`.
+
+## 4. The Rust Language Book
+
+Let us start our Rust journey with [The Rust Language Book](). We can open our offline version of it from inside the container by simply
+
+```bash
+python3 -m http.server 8080 -d $(rustup doc --book --path | xargs dirname)
+```

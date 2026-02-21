@@ -23,6 +23,7 @@ ENV LANG=en_US.UTF-8
 # Install system dependencies required by rustup and common crates
 RUN apt-get update && apt-get install -y \
     build-essential \
+    python3 \
     curl \
     ca-certificates \
     pkg-config \

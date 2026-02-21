@@ -4,8 +4,8 @@
 //! It is often used when documenting the entire crate, because nothing comes before it:
 //! it is the root of the crate. So in order to document an entire crate, you need to use //! syntax.
 //!
-//! 📘 For guides and design docs, see the
-//! [project book](../book/index.html).
+//! For guides and design docs, see the
+//! [project book](../index.html).
 
 /// A utilities module.
 ///
