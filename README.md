@@ -58,33 +58,42 @@ docker run \
 
 ## 3. Rust project development
 
-In this section we are going to assume that we are in a terminal inside a running Docker container (as explained in the previous section).
+In this section we are going to assume that we are in a terminal inside a running Docker container (as explained in the previous section). In order to handle arbitrarily big projects, we are going to organize this repo as a [cargo workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html), which can greatly help managing multiple related packages that are developed in tandem.
 
 ### 3.1 Build the entire project
 
-We can build our current version of the whole project (both the lib and all the available binaries) by:
+We can build our current version of the whole project by simply:
 
 ```bash
 cargo build
 ```
 
-### 3.2 Run a binary executable application
+### 3.2 Binary crates
 
-We can run the main binary executable (associated to `src/main.rs`) by simply:
+Add a new binary crate by:
 
 ```bash
-cargo run --bin rust_playground
+cd crates
+cargo new hello_world --bin
 ```
 
-In a similar way, we can run any other binary executable application. For instance, we can run the one associated with the source file `src/bin/hello_world.rs` by:
-
+and run it by:
 ```bash
 cargo run --bin hello_world
 ```
 
+### 3.3 Add a library crate
+
+Add a new library crate by:
+
+```bash
+cd crates
+cargo new utilities --lib
+```
+
 ### 3.3 Run the tests
 
-Run both unit tests and integration tests...
+Run both unit tests and integration tests by simply:
 
 ```bash
 cargo test
@@ -108,18 +117,16 @@ cd docs
 mdbook init
 ```
 
-Build both the book and docs, and then serve them
+Build both the book, and then serve it
 
 ```bash
 cd rust_playground
 rm -rf docs/book
-cargo doc
 mdbook build ./docs
-cp -r target/doc docs/book/doc
 python3 -m http.server 8080 -d /root/rust_playground/docs/book
 ```
 
-And then open `docs/book/index.html`.
+Or simply manually open the file `/root/rust_playground/docs/book/index.html`.
 
 ## 4. The Rust Language Book
 
