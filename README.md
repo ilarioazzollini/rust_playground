@@ -67,7 +67,7 @@ In this section we are going to assume that we are in a terminal inside a runnin
 We can build our current version of the whole project by simply:
 
 ```bash
-cargo build
+cargo build --workspace --all-targets
 ```
 
 ### 3.2 Binary crates
@@ -75,7 +75,7 @@ cargo build
 Add a new binary crate by:
 
 ```bash
-cd crates
+cd rs-ws
 cargo new hello_world --bin
 ```
 
@@ -89,7 +89,7 @@ cargo run --bin hello_world
 Add a new library crate by:
 
 ```bash
-cd crates
+cd rs-ws
 cargo new utilities --lib
 ```
 
@@ -98,7 +98,7 @@ cargo new utilities --lib
 Run all unit tests and integration tests by simply:
 
 ```bash
-cargo test
+cargo test --workspace --all-targets
 ```
 
 ### 3.4 Generate the docs
@@ -106,7 +106,7 @@ cargo test
 Generate and immediately open the documentation
 
 ```bash
-cargo doc
+cargo doc --workspace --no-deps
 ```
 
 ### 3.5 The markdown book
@@ -119,7 +119,7 @@ cd docs
 mdbook init
 ```
 
-Build both the book, and then serve it
+Build the book, and then serve it
 
 ```bash
 cd rust_playground
@@ -132,10 +132,8 @@ Or simply manually open the file `/root/rust_playground/docs/book/index.html`.
 
 ## 4. The Rust Language Book
 
-Let us start our Rust journey with [The Rust Language Book](). We can open our offline version of it from inside the container by simply
+We can open our offline version of *The Rust Language Book* from inside the container by simply
 
 ```bash
 python3 -m http.server 8080 -d $(rustup doc --book --path | xargs dirname)
 ```
-
-

@@ -1,3 +1,3 @@
 [workspace]
 resolver = "3"
-members = ["rs-ws/random_stuff/*", "rs-ws/the_book/*"]
+members = ["rs-ws/*"]

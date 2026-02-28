@@ -49,4 +49,6 @@ RUN rustup component add \
     rust-analyzer
 
 # Install crates
-RUN cargo install mdbook
+RUN cargo install \
+    mdbook \
+    cargo-llvm-cov

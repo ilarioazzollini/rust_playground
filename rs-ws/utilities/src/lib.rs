@@ -6,6 +6,8 @@
 //! It is often used when documenting the entire crate, because nothing comes before it:
 //! it is the root of the crate. So in order to document an entire crate, you need to use //! syntax.
 
+#![deny(missing_docs)]
+
 /// My math utilities.
 ///
 /// See the [crate-level documentation] for details.
