@@ -17,7 +17,7 @@ jobs:
           mdbook-version: 'latest'
 
       - name: Build book
-        run: mdbook build book
+        run: mdbook build docs
 
       - name: Prepare site
         run: |

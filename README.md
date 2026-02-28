@@ -130,7 +130,7 @@ Build the book, and then serve it
 ```bash
 cd rust_playground
 rm -rf docs/book
-mdbook build ./docs
+mdbook build docs
 python3 -m http.server 8080 -d /root/rust_playground/docs/book
 ```
 
