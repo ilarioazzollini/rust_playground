@@ -1,4 +1,4 @@
-name: Ubuntu Latest CI
+name: Ubuntu 24.04 CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -33,9 +33,8 @@ jobs:
       - name: Docs build
         run: cargo doc --workspace --no-deps
   coverage:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: ci
-    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v4
