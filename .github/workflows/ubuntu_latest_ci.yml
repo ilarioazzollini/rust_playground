@@ -14,7 +14,7 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@stable
         with:
-          components: rustfmt, clippy
+          components: rustfmt, clippy, llvm-tools
 
       - uses: Swatinem/rust-cache@v2
 
@@ -45,10 +45,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Install cargo-llvm-cov
-        run: cargo install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
 
       - name: Generate coverage
-        run: cargo llvm-cov --workspace --all-features --lcov --output-path lcov.info
-
-      - name: Generate coverage summary
-        run: cargo llvm-cov report --summary-only
+        run: cargo llvm-cov --workspace --lib --all-features --fail-under-lines 80

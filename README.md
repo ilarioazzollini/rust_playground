@@ -64,7 +64,7 @@ In this section we are going to assume that we are in a terminal inside a runnin
 
 ### 3.1 Build the entire project
 
-We can build our current version of the whole project by simply:
+We can build the whole project (workspace) by simply:
 
 ```bash
 cargo build --workspace --all-targets
@@ -101,7 +101,13 @@ Run all unit tests and integration tests by simply:
 cargo test --workspace --all-targets
 ```
 
-### 3.4 Generate the docs
+### 3.4 Coverage
+
+```bash
+cargo llvm-cov --workspace --lib --all-features
+```
+
+### 3.5 Generate the docs
 
 Generate and immediately open the documentation
 
@@ -109,7 +115,7 @@ Generate and immediately open the documentation
 cargo doc --workspace --no-deps
 ```
 
-### 3.5 The markdown book
+### 3.6 The markdown book
 
 In order to create our book the first time
 
