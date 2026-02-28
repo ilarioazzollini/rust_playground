@@ -46,7 +46,10 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- \
 RUN rustup component add \
     rustfmt \
     clippy \
-    rust-analyzer
+    rust-analyzer \
+    llvm-tools
 
 # Install crates
-RUN cargo install mdbook
+RUN cargo install \
+    mdbook \
+    cargo-llvm-cov

@@ -1,6 +1,8 @@
 # rust_playground
 
-All the terminal commands in this readme should be launched from the root directory of this repository, unless otherwise specified. Therefore, first of all we should open a terminal, navigate to our favorite folder where we want to clone this repo, and simply:q
+All the terminal commands in this readme should be launched from the root directory of this repository, unless otherwise specified.
+
+In order to get started, we should open a terminal, navigate to our favorite folder where we want to clone this repo, and simply:
 
 ```bash
 git clone https://github.com/ilarioazzollini/rust_playground.git && cd rust_playground
@@ -62,10 +64,10 @@ In this section we are going to assume that we are in a terminal inside a runnin
 
 ### 3.1 Build the entire project
 
-We can build our current version of the whole project by simply:
+We can build the whole project (workspace) by simply:
 
 ```bash
-cargo build
+cargo build --workspace --all-targets
 ```
 
 ### 3.2 Binary crates
@@ -73,7 +75,7 @@ cargo build
 Add a new binary crate by:
 
 ```bash
-cd crates
+cd rs-ws
 cargo new hello_world --bin
 ```
 
@@ -87,27 +89,33 @@ cargo run --bin hello_world
 Add a new library crate by:
 
 ```bash
-cd crates
+cd rs-ws
 cargo new utilities --lib
 ```
 
 ### 3.3 Run the tests
 
-Run both unit tests and integration tests by simply:
+Run all unit tests and integration tests by simply:
 
 ```bash
-cargo test
+cargo test --workspace --all-targets
 ```
 
-### 3.4 Generate the docs
+### 3.4 Coverage
+
+```bash
+cargo llvm-cov --workspace --lib --all-features
+```
+
+### 3.5 Generate the docs
 
 Generate and immediately open the documentation
 
 ```bash
-cargo doc
+cargo doc --workspace --no-deps
 ```
 
-### 3.5 The markdown book
+### 3.6 The markdown book
 
 In order to create our book the first time
 
@@ -117,7 +125,7 @@ cd docs
 mdbook init
 ```
 
-Build both the book, and then serve it
+Build the book, and then serve it
 
 ```bash
 cd rust_playground
@@ -130,7 +138,7 @@ Or simply manually open the file `/root/rust_playground/docs/book/index.html`.
 
 ## 4. The Rust Language Book
 
-Let us start our Rust journey with [The Rust Language Book](). We can open our offline version of it from inside the container by simply
+We can open our offline version of *The Rust Language Book* from inside the container by simply
 
 ```bash
 python3 -m http.server 8080 -d $(rustup doc --book --path | xargs dirname)
