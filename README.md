@@ -1,6 +1,8 @@
 # rust_playground
 
-All the terminal commands in this readme should be launched from the root directory of this repository, unless otherwise specified. Therefore, first of all we should open a terminal, navigate to our favorite folder where we want to clone this repo, and simply:q
+All the terminal commands in this readme should be launched from the root directory of this repository, unless otherwise specified.
+
+In order to get started, we should open a terminal, navigate to our favorite folder where we want to clone this repo, and simply:
 
 ```bash
 git clone https://github.com/ilarioazzollini/rust_playground.git && cd rust_playground
@@ -93,7 +95,7 @@ cargo new utilities --lib
 
 ### 3.3 Run the tests
 
-Run both unit tests and integration tests by simply:
+Run all unit tests and integration tests by simply:
 
 ```bash
 cargo test
@@ -135,3 +137,5 @@ Let us start our Rust journey with [The Rust Language Book](). We can open our o
 ```bash
 python3 -m http.server 8080 -d $(rustup doc --book --path | xargs dirname)
 ```
+
+
