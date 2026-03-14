@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bfa73ebf.js";
+            window.path_to_searchindex_js = "searchindex-5c6fcefd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-045596d5.js"></script>
+        <script src="toc-92322c3c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -183,13 +183,102 @@
 <p>Because I work close to the development side of things, I care deeply about developer experience. Rust offers a powerful and well-designed ecosystem. The tools are reliable, consistent, and pleasant to use. They make it easier to write high-quality code and focus on the problem instead of fighting the language.</p>
 <p><a href="https://github.com/ilarioazzollini/rust_playground">This repository</a> is my Rust playground: a place where I collect what I study, experiment with new ideas, and explore concepts I want to understand more deeply.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<h1 id="why-rust"><a class="header" href="#why-rust">Why Rust</a></h1>
+<p>Why should you at least consider Rust? And why not?</p>
 <p>TBD…</p>
 <h2 id="references"><a class="header" href="#references">References</a></h2>
 <ul>
 <li><a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Language Book</a></li>
 <li>…</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="development-environment-setup"><a class="header" href="#development-environment-setup">Development Environment Setup</a></h1>
+<p>This page provides a step-by-step guide to setting up the development environment required to follow along with the examples in this book. The setup relies on widely used, free tools that work seamlessly on Windows, Linux, and macOS.</p>
+<h2 id="1-prerequisites"><a class="header" href="#1-prerequisites">1. Prerequisites</a></h2>
+<p>The following tools are required:</p>
+<ul>
+<li><a href="https://git-scm.com/">Git</a></li>
+<li><a href="https://www.docker.com/">Docker</a></li>
+<li><a href="https://code.visualstudio.com/">VS Code</a> (optional, but recommended for a fully integrated development environment)</li>
+</ul>
+<p>After installing these tools (and ensuring they are available in your system <code>PATH</code>), open a terminal or PowerShell and run the following commands:</p>
+<pre><code class="language-bash">git --version
+docker --version
+code --version
+</code></pre>
+<p>If the installation was successful, each command should print the installed version without errors.</p>
+<p>Next, install (or update) the required VS Code extensions:</p>
+<pre><code class="language-bash">code --force --install-extension ms-azuretools.vscode-containers
+code --force --install-extension ms-vscode-remote.remote-containers
+</code></pre>
+<h2 id="2-development-environment-overview"><a class="header" href="#2-development-environment-overview">2. Development Environment Overview</a></h2>
+<p>As mentioned earlier, we will rely on Docker to containerize our development environment. This approach ensures that everyone works in the same reproducible environment, regardless of their host operating system.</p>
+<p>The machine on which Docker is installed—and from which we build Docker images and run Docker containers—will be referred to as the <em>host PC</em>. Regardless of the host PC’s operating system, all development work in this book will take place inside an <strong>Ubuntu 24.04 Docker container</strong>.</p>
+<h3 id="21-clone-the-repository"><a class="header" href="#21-clone-the-repository">2.1 Clone the repository</a></h3>
+<p>To get started, open a terminal and navigate to the directory where you want to clone this repository, then run:</p>
+<pre><code class="language-bash">git clone https://github.com/ilarioazzollini/rust_playground.git
+cd rust_playground
+</code></pre>
+<blockquote>
+<p>From this point on, <strong>all terminal commands in this guide should be executed from the root directory of this repository unless otherwise specified</strong>.</p>
+</blockquote>
+<h3 id="22-build-the-docker-container-image"><a class="header" href="#22-build-the-docker-container-image">2.2 Build the Docker container image</a></h3>
+<p>Now, we can build a new Docker container image by running:</p>
+<pre><code class="language-bash">docker build -f docker/Dockerfile -t rust_playground:latest .
+</code></pre>
+<p>If the build completes successfully, the image should appear in the list of available images:</p>
+<pre><code class="language-bash">docker image ls
+</code></pre>
+<h3 id="23-run-a-docker-container"><a class="header" href="#23-run-a-docker-container">2.3 Run a Docker container</a></h3>
+<p>Next, run a container from the image we just built:</p>
+<pre><code class="language-bash">docker run -it --rm --privileged --network=host -v .:/root/rust_playground -w /root/rust_playground --name rust-dev-cont rust_playground:latest bash
+</code></pre>
+<p>You should now be inside a terminal session running in the Docker container.</p>
+<p>If you want to check the container’s status, open another terminal on the host PC and run:</p>
+<pre><code class="language-bash">docker container ls
+</code></pre>
+<p>You should see a running container named <code>rust-dev-cont</code>.</p>
+<p>Now return to the terminal inside the container. If everything worked correctly, your current working directory should be <code>/root/rust_playground</code>. You can verify this by running:</p>
+<pre><code class="language-bash">pwd
+</code></pre>
+<p>You should also see the contents of the rust_playground repository by running:</p>
+<pre><code class="language-bash">ls
+</code></pre>
+<p>This works because the repository directory on the host PC is mounted inside the container using the volume flag <code>-v .:/root/rust_playground</code>. This means the folder is shared between the host and the container.</p>
+<p>We can also verify that the Rust toolchain is correctly installed inside the container:</p>
+<pre><code class="language-bash">cargo --version
+rustc --version
+</code></pre>
+<p>When you are done, you can exit the container by running:</p>
+<pre><code class="language-bash">exit
+</code></pre>
+<blockquote>
+<p>At this point, the development environment is fully functional and we can start writing and running Rust code.</p>
+</blockquote>
+<h2 id="3-development-using-vs-code-with-dev-containers"><a class="header" href="#3-development-using-vs-code-with-dev-containers">3. Development using VS Code with Dev Containers</a></h2>
+<p>A fully integrated development setup can be achieved using VS Code and the Dev Containers extension.</p>
+<p>First, open a terminal and navigate to the root directory of the <code>rust_playground</code> repository:</p>
+<pre><code class="language-bash">cd &lt;rust_playground&gt;
+</code></pre>
+<p>Then open the project in VS Code:</p>
+<pre><code class="language-bash">code .
+</code></pre>
+<p>Open the Command Palette (<code>Ctrl+Shift+P</code>, or <code>Cmd+Shift+P</code> on Mac OS), type</p>
+<pre><code>Dev Containers: Reopen in Container
+</code></pre>
+<p>and select it.</p>
+<p>VS Code will close the current window, start a <code>rust_playground:latest</code> Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file <code>rust_playground/.devcontainer/devcontainer.json</code>.</p>
+<p>This setup provides useful development features such as:</p>
+<ul>
+<li>IntelliSense</li>
+<li>inline error reporting</li>
+<li>automatic formatting</li>
+<li>integrated debugging tools</li>
+</ul>
+<p>Any terminal opened from this VS Code instance will automatically run inside the container.</p>
+<blockquote>
+<p>If you modify the Docker image and rebuild it, remember to also rebuild the Dev Container. In that case, use <code>Dev Containers: Rebuild Without Cache and Reopen in Container</code> from the Command Palette.</p>
+</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="the-book"><a class="header" href="#the-book">The Book</a></h1>
 <p>I am following <a href="https://github.com/rust-lang/book/tree/main">The Rust Programming Language Book</a>.</p>
