@@ -1,6 +1,9 @@
-# Introduction
+# Why Rust
+
+Why should you at least consider Rust? And why not?
 
 TBD...
+
 
 ## References
 

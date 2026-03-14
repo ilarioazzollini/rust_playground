@@ -4,7 +4,7 @@
     // https://code.visualstudio.com/docs/devcontainers/containers#_quick-start-open-an-existing-folder-in-a-container
     // https://code.visualstudio.com/docs/devcontainers/containers#_open-a-folder-on-a-remote-ssh-host-in-a-container
     "name": "RustPlayground",
-    "image": "rust_playground:1.92.0",
+    "image": "rust_playground:latest",
     "privileged": true,
     "runArgs": [
         "--rm",
