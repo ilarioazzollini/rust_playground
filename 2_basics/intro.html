@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Dev Environment Setup - Rust Playground</title>
+        <title>Basics - Rust Playground</title>
 
 
         <!-- Custom HTML head -->
@@ -12,20 +12,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon-de23e50b.svg">
-        <link rel="shortcut icon" href="favicon-8114d1fc.png">
-        <link rel="stylesheet" href="css/variables-8adf115d.css">
-        <link rel="stylesheet" href="css/general-2459343d.css">
-        <link rel="stylesheet" href="css/chrome-ae938929.css">
-        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-2459343d.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -34,13 +34,13 @@
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "";
+            const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-5c6fcefd.js";
+            window.path_to_searchindex_js = "../searchindex-88844c43.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-92322c3c.js"></script>
+        <script src="../toc-86290975.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -107,7 +107,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -142,7 +142,7 @@
                     <h1 class="menu-title">Rust Playground</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -176,103 +176,18 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="development-environment-setup"><a class="header" href="#development-environment-setup">Development Environment Setup</a></h1>
-<p>This page provides a step-by-step guide to setting up the development environment required to follow along with the examples in this book. The setup relies on widely used, free tools that work seamlessly on Windows, Linux, and macOS.</p>
-<h2 id="1-prerequisites"><a class="header" href="#1-prerequisites">1. Prerequisites</a></h2>
-<p>The following tools are required:</p>
-<ul>
-<li><a href="https://git-scm.com/">Git</a></li>
-<li><a href="https://www.docker.com/">Docker</a></li>
-<li><a href="https://code.visualstudio.com/">VS Code</a> (optional, but recommended for a fully integrated development environment)</li>
-</ul>
-<p>After installing these tools (and ensuring they are available in your system <code>PATH</code>), open a terminal or PowerShell and run the following commands:</p>
-<pre><code class="language-bash">git --version
-docker --version
-code --version
-</code></pre>
-<p>If the installation was successful, each command should print the installed version without errors.</p>
-<p>Next, install (or update) the required VS Code extensions:</p>
-<pre><code class="language-bash">code --force --install-extension ms-azuretools.vscode-containers
-code --force --install-extension ms-vscode-remote.remote-containers
-</code></pre>
-<h2 id="2-development-environment-overview"><a class="header" href="#2-development-environment-overview">2. Development Environment Overview</a></h2>
-<p>As mentioned earlier, we will rely on Docker to containerize our development environment. This approach ensures that everyone works in the same reproducible environment, regardless of their host operating system.</p>
-<p>The machine on which Docker is installed—and from which we build Docker images and run Docker containers—will be referred to as the <em>host PC</em>. Regardless of the host PC’s operating system, all development work in this book will take place inside an <strong>Ubuntu 24.04 Docker container</strong>.</p>
-<h3 id="21-clone-the-repository"><a class="header" href="#21-clone-the-repository">2.1 Clone the repository</a></h3>
-<p>To get started, open a terminal and navigate to the directory where you want to clone this repository, then run:</p>
-<pre><code class="language-bash">git clone https://github.com/ilarioazzollini/rust_playground.git
-cd rust_playground
-</code></pre>
-<blockquote>
-<p>From this point on, <strong>all terminal commands in this guide should be executed from the root directory of this repository unless otherwise specified</strong>.</p>
-</blockquote>
-<h3 id="22-build-the-docker-container-image"><a class="header" href="#22-build-the-docker-container-image">2.2 Build the Docker container image</a></h3>
-<p>Now, we can build a new Docker container image by running:</p>
-<pre><code class="language-bash">docker build -f docker/Dockerfile -t rust_playground:latest .
-</code></pre>
-<p>If the build completes successfully, the image should appear in the list of available images:</p>
-<pre><code class="language-bash">docker image ls
-</code></pre>
-<h3 id="23-run-a-docker-container"><a class="header" href="#23-run-a-docker-container">2.3 Run a Docker container</a></h3>
-<p>Next, run a container from the image we just built:</p>
-<pre><code class="language-bash">docker run -it --rm --privileged --network=host -v .:/root/rust_playground -w /root/rust_playground --name rust-dev-cont rust_playground:latest bash
-</code></pre>
-<p>You should now be inside a terminal session running in the Docker container.</p>
-<p>If you want to check the container’s status, open another terminal on the host PC and run:</p>
-<pre><code class="language-bash">docker container ls
-</code></pre>
-<p>You should see a running container named <code>rust-dev-cont</code>.</p>
-<p>Now return to the terminal inside the container. If everything worked correctly, your current working directory should be <code>/root/rust_playground</code>. You can verify this by running:</p>
-<pre><code class="language-bash">pwd
-</code></pre>
-<p>You should also see the contents of the rust_playground repository by running:</p>
-<pre><code class="language-bash">ls
-</code></pre>
-<p>This works because the repository directory on the host PC is mounted inside the container using the volume flag <code>-v .:/root/rust_playground</code>. This means the folder is shared between the host and the container.</p>
-<p>We can also verify that the Rust toolchain is correctly installed inside the container:</p>
-<pre><code class="language-bash">cargo --version
-rustc --version
-</code></pre>
-<p>When you are done, you can exit the container by running:</p>
-<pre><code class="language-bash">exit
-</code></pre>
-<blockquote>
-<p>At this point, the development environment is fully functional and we can start writing and running Rust code.</p>
-</blockquote>
-<h2 id="3-development-using-vs-code-with-dev-containers"><a class="header" href="#3-development-using-vs-code-with-dev-containers">3. Development using VS Code with Dev Containers</a></h2>
-<p>A fully integrated development setup can be achieved using VS Code and the Dev Containers extension.</p>
-<p>First, open a terminal and navigate to the root directory of the <code>rust_playground</code> repository:</p>
-<pre><code class="language-bash">cd &lt;rust_playground&gt;
-</code></pre>
-<p>Then open the project in VS Code:</p>
-<pre><code class="language-bash">code .
-</code></pre>
-<p>Open the Command Palette (<code>Ctrl+Shift+P</code>, or <code>Cmd+Shift+P</code> on Mac OS), type</p>
-<pre><code>Dev Containers: Reopen in Container
-</code></pre>
-<p>and select it.</p>
-<p>VS Code will close the current window, start a <code>rust_playground:latest</code> Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file <code>rust_playground/.devcontainer/devcontainer.json</code>.</p>
-<p>This setup provides useful development features such as:</p>
-<ul>
-<li>IntelliSense</li>
-<li>inline error reporting</li>
-<li>automatic formatting</li>
-<li>integrated debugging tools</li>
-</ul>
-<p>Any terminal opened from this VS Code instance will automatically run inside the container.</p>
-<blockquote>
-<p>If you modify the Docker image and rebuild it, remember to also rebuild the Dev Container. In that case, use <code>Dev Containers: Rebuild Without Cache and Reopen in Container</code> from the Command Palette.</p>
-</blockquote>
+                        <h1 id="basics"><a class="header" href="#basics">Basics</a></h1>
+<p>The goal of this section is to provide some examples for getting familiar with Rust basics.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="why.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../1_project_setup/build.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="the_book/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../2_basics/hello_rust.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -282,11 +197,11 @@ rustc --version
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="why.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../1_project_setup/build.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="the_book/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../2_basics/hello_rust.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -306,13 +221,13 @@ rustc --version
         </script>
 
 
-        <script src="elasticlunr-ef4e11c1.min.js"></script>
-        <script src="mark-09e88c2c.min.js"></script>
-        <script src="searcher-c2a407aa.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
 
-        <script src="clipboard-1626706a.min.js"></script>
-        <script src="highlight-abc7f01d.js"></script>
-        <script src="book-a0b12cfe.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 

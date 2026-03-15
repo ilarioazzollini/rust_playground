@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-5c6fcefd.js";
+            window.path_to_searchindex_js = "searchindex-88844c43.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-92322c3c.js"></script>
+        <script src="toc-86290975.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -185,16 +185,52 @@
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="why-rust"><a class="header" href="#why-rust">Why Rust</a></h1>
 <p>Why should you at least consider Rust? And why not?</p>
-<p>TBD…</p>
+<p>TBD:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=nOSxuaDgl3s">Jon Gjenset Explains: Interview by Vitaly Bragilevsky, Head of Rust Ecosystem @ JetBrains</a></li>
+<li><a href="https://www.youtube.com/watch?v=wClDbLGLjxw">When to Choose Rust • Tim McNamara • YOW! 2022</a></li>
+<li><a href="https://www.youtube.com/watch?v=DnT-LUQgc7s">Considering Rust - Jon Gjenset</a></li>
+<li><a href="https://www.youtube.com/watch?v=r35cBkPRNMI">
+Living with Rust Long-Term - Jon Gjengset</a></li>
+<li><a href="https://www.youtube.com/watch?v=1VgptLwP588">
+Microsoft is Getting Rusty: A Review of Successes and Challenges - Mark Russinovich</a></li>
+<li><a href="https://www.youtube.com/watch?v=SmUprpjCWjM">
+Mark Russinovich, Microsoft Azure CTO tells Rust Nation UK 2025 why Azure is moving to Rust from C++</a></li>
+<li><a href="https://www.youtube.com/watch?v=QrrH2lcl9ew">
+Lars Bergstrom - Beyond Safety and Speed: How Rust Fuels Team Productivity</a></li>
+<li><a href="https://www.youtube.com/watch?v=4DLhTPsg8QQ">
+Spreading Rust to the rest of the company: Moving past the proof of concept - Tim McNamara</a></li>
+<li><a href="https://www.youtube.com/watch?v=zo6yZisg7N0">The promise of Rust - fasterthanlime</a></li>
+<li><a href="https://www.youtube.com/watch?v=ul9vyWuT8SU">
+10 Reasons Not To Use Rust (The Whole Truth) - fasterthanlime</a></li>
+<li><a href="https://www.youtube.com/watch?v=VMpSYJ_7aYM">
+C++ vs Rust: which is faster?</a></li>
+</ul>
+<p>To be properly watched:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=LTn_bZc6leA">
+Actuate 2025: End to End Robotics in Rust with Vivek Bagaria</a></li>
+<li><a href="https://www.youtube.com/watch?v=WOA4GA8tAWA">
+Rust Adoption At Scale with Ubuntu - Jon Seager</a></li>
+<li></li>
+</ul>
 <h2 id="references"><a class="header" href="#references">References</a></h2>
 <ul>
-<li><a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Language Book</a></li>
-<li>…</li>
+<li><a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Language Book</a>: the main introductory book about Rust, usually referred to as “the book” by rustaceans</li>
+<li><a href="https://doc.rust-lang.org/rust-by-example/">Rust by Example</a>: a collection of runnable examples that illustrate various Rust concepts and standard libraries. Usually consumed alongside “the book”, gives a more interactive experience to learning Rust basics</li>
+<li><a href="https://doc.rust-lang.org/reference/introduction.html">The Rust Reference</a>: a book that serves as a reference to what is available in stable Rust.</li>
+<li><a href="https://doc.rust-lang.org/std/index.html">The Rust Standard Library Documentation</a></li>
+<li><a href="https://crates.io/">crates.io</a>: The Rust community’s crate registry</li>
+<li><a href="https://doc.rust-lang.org/cargo/index.html">The Cargo book</a>: <code>cargo</code> is the Rust package manager and build system</li>
+<li><a href="https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html">The rustdoc Book</a>: The standard Rust distribution ships with a tool called <code>rustdoc</code>. Its job is to generate documentation for Rust projects.</li>
+<li><a href="https://rust-lang.github.io/api-guidelines/">Rust API Guidelines</a>: This is a set of recommendations on how to design and present APIs for the Rust programming language. They are authored largely by the Rust library team, based on experiences building the Rust standard library and other crates in the Rust ecosystem</li>
+<li><a href="https://rust-cli.github.io/book/index.html">Command Line Applications in Rust</a>: Rust is a statically compiled, fast language with great tooling and a rapidly growing ecosystem. That makes it a great fit for writing command line applications: They should be small, portable, and quick to run. Command line applications are also a great way to get started with learning Rust; or to introduce Rust to your team!</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="development-environment-setup"><a class="header" href="#development-environment-setup">Development Environment Setup</a></h1>
-<p>This page provides a step-by-step guide to setting up the development environment required to follow along with the examples in this book. The setup relies on widely used, free tools that work seamlessly on Windows, Linux, and macOS.</p>
-<h2 id="1-prerequisites"><a class="header" href="#1-prerequisites">1. Prerequisites</a></h2>
+<h1 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h1>
+<p>This section provides a step-by-step guide to setting up the development environment required to follow along with the examples in this book. The setup relies on widely used, free tools that work seamlessly on Windows, Linux, and macOS.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="prerequisites"><a class="header" href="#prerequisites">Prerequisites</a></h1>
 <p>The following tools are required:</p>
 <ul>
 <li><a href="https://git-scm.com/">Git</a></li>
@@ -207,14 +243,11 @@ docker --version
 code --version
 </code></pre>
 <p>If the installation was successful, each command should print the installed version without errors.</p>
-<p>Next, install (or update) the required VS Code extensions:</p>
-<pre><code class="language-bash">code --force --install-extension ms-azuretools.vscode-containers
-code --force --install-extension ms-vscode-remote.remote-containers
-</code></pre>
-<h2 id="2-development-environment-overview"><a class="header" href="#2-development-environment-overview">2. Development Environment Overview</a></h2>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="development-environment-setup"><a class="header" href="#development-environment-setup">Development Environment Setup</a></h1>
 <p>As mentioned earlier, we will rely on Docker to containerize our development environment. This approach ensures that everyone works in the same reproducible environment, regardless of their host operating system.</p>
-<p>The machine on which Docker is installed—and from which we build Docker images and run Docker containers—will be referred to as the <em>host PC</em>. Regardless of the host PC’s operating system, all development work in this book will take place inside an <strong>Ubuntu 24.04 Docker container</strong>.</p>
-<h3 id="21-clone-the-repository"><a class="header" href="#21-clone-the-repository">2.1 Clone the repository</a></h3>
+<p>The machine on which Docker is installed — and from which we build Docker images and run Docker containers — will be referred to as the <em>host PC</em>. Regardless of the host PC’s operating system, all development work in this book will take place inside an <strong>Ubuntu Docker container</strong>.</p>
+<h2 id="1-clone-the-repository"><a class="header" href="#1-clone-the-repository">1. Clone the repository</a></h2>
 <p>To get started, open a terminal and navigate to the directory where you want to clone this repository, then run:</p>
 <pre><code class="language-bash">git clone https://github.com/ilarioazzollini/rust_playground.git
 cd rust_playground
@@ -222,14 +255,15 @@ cd rust_playground
 <blockquote>
 <p>From this point on, <strong>all terminal commands in this guide should be executed from the root directory of this repository unless otherwise specified</strong>.</p>
 </blockquote>
-<h3 id="22-build-the-docker-container-image"><a class="header" href="#22-build-the-docker-container-image">2.2 Build the Docker container image</a></h3>
+<h2 id="2-build-the-docker-container-image"><a class="header" href="#2-build-the-docker-container-image">2. Build the Docker container image</a></h2>
 <p>Now, we can build a new Docker container image by running:</p>
 <pre><code class="language-bash">docker build -f docker/Dockerfile -t rust_playground:latest .
 </code></pre>
 <p>If the build completes successfully, the image should appear in the list of available images:</p>
 <pre><code class="language-bash">docker image ls
 </code></pre>
-<h3 id="23-run-a-docker-container"><a class="header" href="#23-run-a-docker-container">2.3 Run a Docker container</a></h3>
+<p>If you want more details about this image, you can refer to the file <a href="https://github.com/ilarioazzollini/rust_playground/blob/main/docker/Dockerfile"><code>rust_playground/docker/Dockerfile</code></a></p>
+<h2 id="3-run-a-docker-container"><a class="header" href="#3-run-a-docker-container">3. Run a Docker container</a></h2>
 <p>Next, run a container from the image we just built:</p>
 <pre><code class="language-bash">docker run -it --rm --privileged --network=host -v .:/root/rust_playground -w /root/rust_playground --name rust-dev-cont rust_playground:latest bash
 </code></pre>
@@ -255,19 +289,23 @@ rustc --version
 <blockquote>
 <p>At this point, the development environment is fully functional and we can start writing and running Rust code.</p>
 </blockquote>
-<h2 id="3-development-using-vs-code-with-dev-containers"><a class="header" href="#3-development-using-vs-code-with-dev-containers">3. Development using VS Code with Dev Containers</a></h2>
+<h2 id="4-vs-code-with-dev-containers"><a class="header" href="#4-vs-code-with-dev-containers">4. VS Code with Dev Containers</a></h2>
 <p>A fully integrated development setup can be achieved using VS Code and the Dev Containers extension.</p>
-<p>First, open a terminal and navigate to the root directory of the <code>rust_playground</code> repository:</p>
+<p>First of all, we need to open a terminal and install (or update) the required VS Code extensions:</p>
+<pre><code class="language-bash">code --force --install-extension ms-azuretools.vscode-containers
+code --force --install-extension ms-vscode-remote.remote-containers
+</code></pre>
+<p>Then, navigate to the root directory of the <code>rust_playground</code> repository:</p>
 <pre><code class="language-bash">cd &lt;rust_playground&gt;
 </code></pre>
-<p>Then open the project in VS Code:</p>
+<p>And open the project in VS Code:</p>
 <pre><code class="language-bash">code .
 </code></pre>
 <p>Open the Command Palette (<code>Ctrl+Shift+P</code>, or <code>Cmd+Shift+P</code> on Mac OS), type</p>
 <pre><code>Dev Containers: Reopen in Container
 </code></pre>
 <p>and select it.</p>
-<p>VS Code will close the current window, start a <code>rust_playground:latest</code> Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file <code>rust_playground/.devcontainer/devcontainer.json</code>.</p>
+<p>VS Code will close the current window, start a <code>rust_playground:latest</code> Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file <a href="https://github.com/ilarioazzollini/rust_playground/blob/main/.devcontainer/devcontainer.json"><code>rust_playground/.devcontainer/devcontainer.json</code></a>.</p>
 <p>This setup provides useful development features such as:</p>
 <ul>
 <li>IntelliSense</li>
@@ -280,18 +318,83 @@ rustc --version
 <p>If you modify the Docker image and rebuild it, remember to also rebuild the Dev Container. In that case, use <code>Dev Containers: Rebuild Without Cache and Reopen in Container</code> from the Command Palette.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="the-book"><a class="header" href="#the-book">The Book</a></h1>
-<p>I am following <a href="https://github.com/rust-lang/book/tree/main">The Rust Programming Language Book</a>.</p>
-<p>Table of Contents:</p>
+<h1 id="build-the-project"><a class="header" href="#build-the-project">Build the Project</a></h1>
+<p>Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</p>
+<p>To manage projects of arbitrary size, this repository is organized as a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. A workspace makes it easier to develop and maintain multiple related crates within a single project. This approach allows multiple binaries, libraries, examples, and experiments to coexist in a single repository while sharing dependencies and build configuration.</p>
+<p>In this repository, the <code>rs-ws</code> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
+<h2 id="binary-crates"><a class="header" href="#binary-crates">Binary crates</a></h2>
+<p>A binary crate produces an executable program.</p>
+<p>To create a new binary crate, run:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new hello_world --bin
+</code></pre>
+<p>We can then build and run it with:</p>
+<pre><code class="language-bash">cargo run --bin hello_world
+</code></pre>
+<h2 id="library-crates"><a class="header" href="#library-crates">Library crates</a></h2>
+<p>A library crate provides reusable functionality that can be shared across multiple projects or binaries.</p>
+<p>To create a new library crate, run:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new utilities --lib
+</code></pre>
+<h2 id="build-the-entire-workspace"><a class="header" href="#build-the-entire-workspace">Build the entire workspace</a></h2>
+<p>To build all crates in the workspace, run:</p>
+<pre><code class="language-bash">cargo build --workspace --all-targets
+</code></pre>
+<p>This command compiles every crate and all supported targets in the workspace.</p>
+<h2 id="run-the-tests"><a class="header" href="#run-the-tests">Run the tests</a></h2>
+<p>To execute all unit tests and integration tests across the workspace, run:</p>
+<pre><code class="language-bash">cargo test --workspace --all-targets
+</code></pre>
+<p>References:</p>
 <ul>
-<li><a href="the_book/ch01.html">Chapter 1</a></li>
+<li><a href="https://doc.rust-lang.org/cargo/guide/tests.html">cargo test</a></li>
+</ul>
+<h2 id="coverage"><a class="header" href="#coverage">Coverage</a></h2>
+<p>To generate a code coverage report, run:</p>
+<pre><code class="language-bash">cargo llvm-cov --workspace --lib --all-features
+</code></pre>
+<p>References:</p>
+<ul>
+<li><a href="https://crates.io/crates/cargo-llvm-cov">cargo-llvm-cov crate</a></li>
+</ul>
+<h2 id="generate-the-docs"><a class="header" href="#generate-the-docs">Generate the docs</a></h2>
+<p>Rust can automatically generate documentation from comments written in the source code.</p>
+<p>To generate the documentation for the entire workspace, run:</p>
+<pre><code class="language-bash">cargo doc --workspace --no-deps
+</code></pre>
+<p>References:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-doc.html">cargo doc</a></li>
+<li><a href="https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html">rustdoc</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="basics"><a class="header" href="#basics">Basics</a></h1>
+<p>The goal of this section is to provide some examples for getting familiar with Rust basics.</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hello-rust-world"><a class="header" href="#hello-rust-world">Hello, Rust World!</a></h1>
-<p>TBD…</p>
+<p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
+<p>Here we are, ready to say our “Hello, World!” in Rust. This is basically needed to just getting familiar with creating a new crate, build it and run it.</p>
+<p>As explained in <a href="#build-the-project">Build the Project</a>, we can create our new binary crate inside our Cargo workspace by running:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new hello_rust --bin
+</code></pre>
+<p>resulting in the creation of a crate having only one source file <code>rs-ws/hello_rust/src/main.rs</code>:</p>
 <pre class="playground"><code class="language-rust">fn main() {
     println!("Hello, world!");
 }</code></pre>
+<p>We can <a href="https://doc.rust-lang.org/cargo/commands/cargo-check.html">cargo check</a> the crate by:</p>
+<pre><code class="language-bash">cargo check --bin hello_world --release
+</code></pre>
+<p>Or <a href="https://doc.rust-lang.org/cargo/commands/cargo-build.html">cargo build</a>:</p>
+<pre><code class="language-bash">cargo build --bin hello_world --release
+</code></pre>
+<p>And finally, <a href="https://doc.rust-lang.org/cargo/commands/cargo-run.html">cargo run</a>:</p>
+<pre><code class="language-bash">cargo run --bin hello_world --release
+</code></pre>
+<blockquote>
+<p>Notice that if we omit the <code>--release</code> flag, the target will be checked/built/run with the default <code>unoptimized + debuginfo</code> profile</p>
+</blockquote>
 
                     </main>
 
