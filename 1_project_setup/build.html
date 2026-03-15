@@ -37,10 +37,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-88844c43.js";
+            window.path_to_searchindex_js = "../searchindex-96bf5e71.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-86290975.js"></script>
+        <script src="../toc-639ae100.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,39 +180,52 @@
 <p>Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container (as previously explained in <a href="./setup.html">Development Environment Setup</a>).</p>
 <p>To manage projects of arbitrary size, this repository is organized as a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. A workspace makes it easier to develop and maintain multiple related crates within a single project. This approach allows multiple binaries, libraries, examples, and experiments to coexist in a single repository while sharing dependencies and build configuration.</p>
 <p>In this repository, the <code>rs-ws</code> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
-<h2 id="binary-crates"><a class="header" href="#binary-crates">Binary crates</a></h2>
-<p>A binary crate produces an executable program.</p>
-<p>To create a new binary crate, run:</p>
-<pre><code class="language-bash">cd rs-ws
-cargo new hello_world --bin
+<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<p>To check all crates in the workspace, run:</p>
+<pre><code class="language-bash">cargo check --workspace --all-targets
 </code></pre>
-<p>We can then build and run it with:</p>
-<pre><code class="language-bash">cargo run --bin hello_world
-</code></pre>
-<h2 id="library-crates"><a class="header" href="#library-crates">Library crates</a></h2>
-<p>A library crate provides reusable functionality that can be shared across multiple projects or binaries.</p>
-<p>To create a new library crate, run:</p>
-<pre><code class="language-bash">cd rs-ws
-cargo new utilities --lib
-</code></pre>
-<h2 id="build-the-entire-workspace"><a class="header" href="#build-the-entire-workspace">Build the entire workspace</a></h2>
-<p>To build all crates in the workspace, run:</p>
+<p>Or, to directly build all crates in the workspace, run:</p>
 <pre><code class="language-bash">cargo build --workspace --all-targets
 </code></pre>
-<p>This command compiles every crate and all supported targets in the workspace.</p>
-<h2 id="run-the-tests"><a class="header" href="#run-the-tests">Run the tests</a></h2>
+<blockquote>
+<p><code>cargo check</code> checks a local package and all of its dependencies for errors. This will essentially compile the packages without performing the final step of code generation, which is faster than running <code>cargo build</code>.</p>
+</blockquote>
+<p><em>References</em>:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-check.html">cargo check</a></li>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-build.html">cargo build</a></li>
+</ul>
+<h2 id="format"><a class="header" href="#format">Format</a></h2>
+<p>To format all crates in the workspace, run:</p>
+<pre><code class="language-bash">cargo fmt --verbose --all
+</code></pre>
+<p><em>References</em>:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-fmt.html">cargo fmt</a></li>
+<li><a href="https://github.com/rust-lang/rustfmt">rustfmt</a></li>
+</ul>
+<h2 id="run-lints-clippy"><a class="header" href="#run-lints-clippy">Run lints (Clippy)</a></h2>
+<p>Clippy is a collection of lints to catch common mistakes and improve our Rust code. It is a superset of the default <a href="https://doc.rust-lang.org/rustc/lints/index.html?highlight=lint#lints">rustc lints</a>.</p>
+<pre><code class="language-bash">cargo clippy --verbose --all-targets --release
+</code></pre>
+<p><em>References</em>:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-clippy.html">cargo clippy</a></li>
+<li><a href="https://doc.rust-lang.org/clippy/index.html">Clippy Documentation</a></li>
+</ul>
+<h2 id="run-tests"><a class="header" href="#run-tests">Run tests</a></h2>
 <p>To execute all unit tests and integration tests across the workspace, run:</p>
 <pre><code class="language-bash">cargo test --workspace --all-targets
 </code></pre>
-<p>References:</p>
+<p><em>References</em>:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/cargo/guide/tests.html">cargo test</a></li>
 </ul>
-<h2 id="coverage"><a class="header" href="#coverage">Coverage</a></h2>
+<h2 id="line-coverage-report"><a class="header" href="#line-coverage-report">Line coverage report</a></h2>
 <p>To generate a code coverage report, run:</p>
 <pre><code class="language-bash">cargo llvm-cov --workspace --lib --all-features
 </code></pre>
-<p>References:</p>
+<p><em>References</em>:</p>
 <ul>
 <li><a href="https://crates.io/crates/cargo-llvm-cov">cargo-llvm-cov crate</a></li>
 </ul>
@@ -221,7 +234,7 @@ cargo new utilities --lib
 <p>To generate the documentation for the entire workspace, run:</p>
 <pre><code class="language-bash">cargo doc --workspace --no-deps
 </code></pre>
-<p>References:</p>
+<p><em>References</em>:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/cargo/commands/cargo-doc.html">cargo doc</a></li>
 <li><a href="https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html">rustdoc</a></li>

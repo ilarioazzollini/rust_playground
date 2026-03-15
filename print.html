@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-88844c43.js";
+            window.path_to_searchindex_js = "searchindex-96bf5e71.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-86290975.js"></script>
+        <script src="toc-639ae100.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -216,7 +216,9 @@ Rust Adoption At Scale with Ubuntu - Jon Seager</a></li>
 </ul>
 <h2 id="references"><a class="header" href="#references">References</a></h2>
 <ul>
-<li><a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Language Book</a>: the main introductory book about Rust, usually referred to as “the book” by rustaceans</li>
+<li><a href="https://doc.rust-lang.org/stable/book/">The Rust Programming Language Book</a>: The main introductory book about Rust, usually referred to as “the book” by rustaceans</li>
+<li><a href="https://doc.rust-lang.org/rustc/what-is-rustc.html">The rustc book</a>: The compiler for the Rust programming language, provided by the project itself. It also comes with its own set of lints.</li>
+<li><a href="https://doc.rust-lang.org/clippy/index.html">Clippy Documentation</a>: A collection of lints to catch common mistakes and improve your Rust code. It is a superset of <code>rustc</code> lints.</li>
 <li><a href="https://doc.rust-lang.org/rust-by-example/">Rust by Example</a>: a collection of runnable examples that illustrate various Rust concepts and standard libraries. Usually consumed alongside “the book”, gives a more interactive experience to learning Rust basics</li>
 <li><a href="https://doc.rust-lang.org/reference/introduction.html">The Rust Reference</a>: a book that serves as a reference to what is available in stable Rust.</li>
 <li><a href="https://doc.rust-lang.org/std/index.html">The Rust Standard Library Documentation</a></li>
@@ -322,39 +324,52 @@ code --force --install-extension ms-vscode-remote.remote-containers
 <p>Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</p>
 <p>To manage projects of arbitrary size, this repository is organized as a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. A workspace makes it easier to develop and maintain multiple related crates within a single project. This approach allows multiple binaries, libraries, examples, and experiments to coexist in a single repository while sharing dependencies and build configuration.</p>
 <p>In this repository, the <code>rs-ws</code> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
-<h2 id="binary-crates"><a class="header" href="#binary-crates">Binary crates</a></h2>
-<p>A binary crate produces an executable program.</p>
-<p>To create a new binary crate, run:</p>
-<pre><code class="language-bash">cd rs-ws
-cargo new hello_world --bin
+<h2 id="build"><a class="header" href="#build">Build</a></h2>
+<p>To check all crates in the workspace, run:</p>
+<pre><code class="language-bash">cargo check --workspace --all-targets
 </code></pre>
-<p>We can then build and run it with:</p>
-<pre><code class="language-bash">cargo run --bin hello_world
-</code></pre>
-<h2 id="library-crates"><a class="header" href="#library-crates">Library crates</a></h2>
-<p>A library crate provides reusable functionality that can be shared across multiple projects or binaries.</p>
-<p>To create a new library crate, run:</p>
-<pre><code class="language-bash">cd rs-ws
-cargo new utilities --lib
-</code></pre>
-<h2 id="build-the-entire-workspace"><a class="header" href="#build-the-entire-workspace">Build the entire workspace</a></h2>
-<p>To build all crates in the workspace, run:</p>
+<p>Or, to directly build all crates in the workspace, run:</p>
 <pre><code class="language-bash">cargo build --workspace --all-targets
 </code></pre>
-<p>This command compiles every crate and all supported targets in the workspace.</p>
-<h2 id="run-the-tests"><a class="header" href="#run-the-tests">Run the tests</a></h2>
+<blockquote>
+<p><code>cargo check</code> checks a local package and all of its dependencies for errors. This will essentially compile the packages without performing the final step of code generation, which is faster than running <code>cargo build</code>.</p>
+</blockquote>
+<p><em>References</em>:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-check.html">cargo check</a></li>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-build.html">cargo build</a></li>
+</ul>
+<h2 id="format"><a class="header" href="#format">Format</a></h2>
+<p>To format all crates in the workspace, run:</p>
+<pre><code class="language-bash">cargo fmt --verbose --all
+</code></pre>
+<p><em>References</em>:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-fmt.html">cargo fmt</a></li>
+<li><a href="https://github.com/rust-lang/rustfmt">rustfmt</a></li>
+</ul>
+<h2 id="run-lints-clippy"><a class="header" href="#run-lints-clippy">Run lints (Clippy)</a></h2>
+<p>Clippy is a collection of lints to catch common mistakes and improve our Rust code. It is a superset of the default <a href="https://doc.rust-lang.org/rustc/lints/index.html?highlight=lint#lints">rustc lints</a>.</p>
+<pre><code class="language-bash">cargo clippy --verbose --all-targets --release
+</code></pre>
+<p><em>References</em>:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/cargo/commands/cargo-clippy.html">cargo clippy</a></li>
+<li><a href="https://doc.rust-lang.org/clippy/index.html">Clippy Documentation</a></li>
+</ul>
+<h2 id="run-tests"><a class="header" href="#run-tests">Run tests</a></h2>
 <p>To execute all unit tests and integration tests across the workspace, run:</p>
 <pre><code class="language-bash">cargo test --workspace --all-targets
 </code></pre>
-<p>References:</p>
+<p><em>References</em>:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/cargo/guide/tests.html">cargo test</a></li>
 </ul>
-<h2 id="coverage"><a class="header" href="#coverage">Coverage</a></h2>
+<h2 id="line-coverage-report"><a class="header" href="#line-coverage-report">Line coverage report</a></h2>
 <p>To generate a code coverage report, run:</p>
 <pre><code class="language-bash">cargo llvm-cov --workspace --lib --all-features
 </code></pre>
-<p>References:</p>
+<p><em>References</em>:</p>
 <ul>
 <li><a href="https://crates.io/crates/cargo-llvm-cov">cargo-llvm-cov crate</a></li>
 </ul>
@@ -363,38 +378,129 @@ cargo new utilities --lib
 <p>To generate the documentation for the entire workspace, run:</p>
 <pre><code class="language-bash">cargo doc --workspace --no-deps
 </code></pre>
-<p>References:</p>
+<p><em>References</em>:</p>
 <ul>
 <li><a href="https://doc.rust-lang.org/cargo/commands/cargo-doc.html">cargo doc</a></li>
 <li><a href="https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html">rustdoc</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="basics"><a class="header" href="#basics">Basics</a></h1>
-<p>The goal of this section is to provide some examples for getting familiar with Rust basics.</p>
+<p>The goal of this section is to get familiar with Rust language basics, as well as Rust basic development tools.</p>
+<p>We will start with the creation of our first binary crate, followed by the creation of our first library crate, and then we will focus on Rust syntax by developing some basic applications.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="hello-rust-world"><a class="header" href="#hello-rust-world">Hello, Rust World!</a></h1>
+<h1 id="hello-binary-crate"><a class="header" href="#hello-binary-crate">Hello, Binary Crate!</a></h1>
 <p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
-<p>Here we are, ready to say our “Hello, World!” in Rust. This is basically needed to just getting familiar with creating a new crate, build it and run it.</p>
-<p>As explained in <a href="#build-the-project">Build the Project</a>, we can create our new binary crate inside our Cargo workspace by running:</p>
+<p>Here we are, ready to say our “Hello, World!” in Rust. In order to do so, we will create our first <em>binary crate</em>. A binary crate produces an executable program.</p>
+<p>We can create our new binary crate inside our Cargo workspace by running the <a href="https://doc.rust-lang.org/cargo/commands/cargo-new.html">cargo new</a> command:</p>
 <pre><code class="language-bash">cd rs-ws
-cargo new hello_rust --bin
+cargo new hello_world --bin
 </code></pre>
-<p>resulting in the creation of a crate having only one source file <code>rs-ws/hello_rust/src/main.rs</code>:</p>
+<p>resulting in the creation of a crate having only one source file <code>rs-ws/hello_world/src/main.rs</code>:</p>
 <pre class="playground"><code class="language-rust">fn main() {
     println!("Hello, world!");
 }</code></pre>
+<p>Then, we can <a href="https://doc.rust-lang.org/cargo/commands/cargo-fmt.html">cargo fmt</a> the crate by:</p>
+<pre><code class="language-bash">cargo fmt --verbose --package hello_world
+</code></pre>
+<p>We can <a href="https://doc.rust-lang.org/cargo/commands/cargo-clippy.html">cargo clippy</a> the crate by:</p>
+<pre><code class="language-bash">cargo clippy --verbose --package hello_world
+</code></pre>
 <p>We can <a href="https://doc.rust-lang.org/cargo/commands/cargo-check.html">cargo check</a> the crate by:</p>
-<pre><code class="language-bash">cargo check --bin hello_world --release
+<pre><code class="language-bash">cargo check --package hello_world --release
 </code></pre>
 <p>Or <a href="https://doc.rust-lang.org/cargo/commands/cargo-build.html">cargo build</a>:</p>
-<pre><code class="language-bash">cargo build --bin hello_world --release
+<pre><code class="language-bash">cargo build --package hello_world --release
 </code></pre>
 <p>And finally, <a href="https://doc.rust-lang.org/cargo/commands/cargo-run.html">cargo run</a>:</p>
-<pre><code class="language-bash">cargo run --bin hello_world --release
+<pre><code class="language-bash">cargo run --package hello_world --release
 </code></pre>
 <blockquote>
 <p>Notice that if we omit the <code>--release</code> flag, the target will be checked/built/run with the default <code>unoptimized + debuginfo</code> profile</p>
 </blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="hello-library-crate"><a class="header" href="#hello-library-crate">Hello, Library Crate!</a></h1>
+<p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
+<p>A <em>library crate</em> provides reusable functionality that can be shared across multiple projects or binaries.</p>
+<p>To create a new library crate, we can run:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new my_lib --lib
+</code></pre>
+<p>resulting in the creation of a crate having only one source file <code>rs-ws/my_lib/src/lib.rs</code>:</p>
+<pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn add(left: u64, right: u64) -&gt; u64 {
+    left + right
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let result = add(2, 2);
+        assert_eq!(result, 4);
+    }
+}
+<span class="boring">}</span></code></pre>
+<p>As we can see, by default the library crate has an <code>add</code> function, as well as an <code>it_works</code> test function, which is a unit test for <code>add</code>.</p>
+<p>As for a <a href="#hello-binary-crate">binary crate</a>, we can format:</p>
+<pre><code class="language-bash">cargo fmt --verbose --package my_lib
+</code></pre>
+<p>and we can run Clippy lints:</p>
+<pre><code class="language-bash">cargo clippy --verbose --package my_lib --release
+</code></pre>
+<p>and we can check the crate:</p>
+<pre><code class="language-bash">cargo check --package my_lib --release
+</code></pre>
+<p>or we can build it:</p>
+<pre><code class="language-bash">cargo build --package my_lib --release
+</code></pre>
+<p>In addition, we can run the tests:</p>
+<pre><code class="language-bash">cargo test --package my_lib --release
+</code></pre>
+<p>Get a line coverage report:</p>
+<pre><code class="language-bash">cargo llvm-cov --package my_lib --release
+</code></pre>
+<p>And, last but not least, we can automatically generate the documentation:</p>
+<pre><code class="language-bash">cargo doc --package my_lib --no-deps --release
+</code></pre>
+<p>that will end up in <code>rust_playground/target/doc/my_lib</code>, and we can serve the docs by:</p>
+<pre><code class="language-bash">python3 -m http.server 8080 -d /root/rust_playground/target/doc
+</code></pre>
+<p>and read them by opening a browser and navigating to <a href="http://localhost:8080/my_lib/index.html">http://localhost:8080/my_lib/index.html</a>.</p>
+<h2 id="create-a-binary-crate-depending-on-this-library"><a class="header" href="#create-a-binary-crate-depending-on-this-library">Create a binary crate depending on this library</a></h2>
+<p>Now, we can create a new binary crate that depends on the library crate we just created. It is really easy to do so in a workspace.</p>
+<p>Let us start by creating <code>my_app</code>:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new my_app --bin
+</code></pre>
+<p>Then, navigate to its <code>Cargo.toml</code> file (at <code>rs-ws/my_app/Cargo.toml</code>), and under the <code>dependencies</code> section, add a dependency on <code>my_lib</code> as follows:</p>
+<pre><code class="language-toml">[dependencies]
+my_lib = { path = "../my_lib" }
+</code></pre>
+<p>Now, we can modify the <code>rs-ws/my_app/src/main.src</code> file as follows:</p>
+<pre><code class="language-rust noplayground">fn main() {
+    let number_1: u64 = 2;
+    let number_2: u64 = 1;
+
+    let result: u64 = my_lib::add(number_1, number_2);
+    println!(
+        "Added numbers '{}' and '{}', and got the result: '{}'",
+        number_1, number_2, result
+    );
+}</code></pre>
+<p>and we should be able to compile it and run it:</p>
+<pre><code class="language-bash">cargo run --package my_app --release
+</code></pre>
+<h2 id="useful-references"><a class="header" href="#useful-references">Useful References</a></h2>
+<p>There are many important aspects to consider while developing a library crate. Some useful references are:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/book/ch07-00-managing-growing-projects-with-packages-crates-and-modules.html">Packages, Crates, and Modules - The Book</a></li>
+<li><a href="https://doc.rust-lang.org/book/ch11-00-testing.html">Writing Automated Tests - The Book</a></li>
+<li><a href="https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments">Making Useful Documentation Comments - The Book</a></li>
+<li><a href="https://doc.rust-lang.org/rustdoc/references.html">The rustdoc book</a></li>
+</ul>
 
                     </main>
 
