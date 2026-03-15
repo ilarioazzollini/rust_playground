@@ -6,45 +6,52 @@ To manage projects of arbitrary size, this repository is organized as a [Cargo w
 
 In this repository, the `rs-ws` directory acts as the workspace root and contains all the crates that we will develop throughout this book.
 
-## Binary crates
+## Build
 
-A binary crate produces an executable program.
-
-To create a new binary crate, run:
+To check all crates in the workspace, run:
 
 ```bash
-cd rs-ws
-cargo new hello_world --bin
+cargo check --workspace --all-targets
 ```
 
-We can then build and run it with:
-
-```bash
-cargo run --bin hello_world
-```
-
-## Library crates
-
-A library crate provides reusable functionality that can be shared across multiple projects or binaries.
-
-To create a new library crate, run:
-
-```bash
-cd rs-ws
-cargo new utilities --lib
-```
-
-## Build the entire workspace
-
-To build all crates in the workspace, run:
+Or, to directly build all crates in the workspace, run:
 
 ```bash
 cargo build --workspace --all-targets
 ```
 
-This command compiles every crate and all supported targets in the workspace.
+> `cargo check` checks a local package and all of its dependencies for errors. This will essentially compile the packages without performing the final step of code generation, which is faster than running `cargo build`. 
 
-## Run the tests
+*References*:
+- [cargo check](https://doc.rust-lang.org/cargo/commands/cargo-check.html)
+- [cargo build](https://doc.rust-lang.org/cargo/commands/cargo-build.html)
+
+## Format
+
+To format all crates in the workspace, run:
+
+```bash
+cargo fmt --verbose --all
+```
+
+*References*:
+- [cargo fmt](https://doc.rust-lang.org/cargo/commands/cargo-fmt.html)
+- [rustfmt](https://github.com/rust-lang/rustfmt)
+
+
+## Run lints (Clippy)
+
+Clippy is a collection of lints to catch common mistakes and improve our Rust code. It is a superset of the default [rustc lints](https://doc.rust-lang.org/rustc/lints/index.html?highlight=lint#lints).
+
+```bash
+cargo clippy --verbose --all-targets --release
+```
+
+*References*:
+- [cargo clippy](https://doc.rust-lang.org/cargo/commands/cargo-clippy.html)
+- [Clippy Documentation](https://doc.rust-lang.org/clippy/index.html)
+
+## Run tests
 
 To execute all unit tests and integration tests across the workspace, run:
 
@@ -52,10 +59,10 @@ To execute all unit tests and integration tests across the workspace, run:
 cargo test --workspace --all-targets
 ```
 
-References:
+*References*:
 - [cargo test](https://doc.rust-lang.org/cargo/guide/tests.html)
 
-## Coverage
+## Line coverage report
 
 To generate a code coverage report, run:
 
@@ -63,7 +70,7 @@ To generate a code coverage report, run:
 cargo llvm-cov --workspace --lib --all-features
 ```
 
-References:
+*References*:
 - [cargo-llvm-cov crate](https://crates.io/crates/cargo-llvm-cov)
 
 ## Generate the docs
@@ -76,8 +83,6 @@ To generate the documentation for the entire workspace, run:
 cargo doc --workspace --no-deps
 ```
 
-
-
-References:
+*References*:
 - [cargo doc](https://doc.rust-lang.org/cargo/commands/cargo-doc.html)
 - [rustdoc](https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html)

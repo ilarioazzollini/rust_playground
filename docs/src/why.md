@@ -32,7 +32,9 @@ Rust Adoption At Scale with Ubuntu - Jon Seager](https://www.youtube.com/watch?v
 
 ## References
 
-- [The Rust Programming Language Book](https://doc.rust-lang.org/stable/book/): the main introductory book about Rust, usually referred to as "the book" by rustaceans
+- [The Rust Programming Language Book](https://doc.rust-lang.org/stable/book/): The main introductory book about Rust, usually referred to as "the book" by rustaceans
+- [The rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html): The compiler for the Rust programming language, provided by the project itself. It also comes with its own set of lints.
+- [Clippy Documentation](https://doc.rust-lang.org/clippy/index.html): A collection of lints to catch common mistakes and improve your Rust code. It is a superset of `rustc` lints.
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/): a collection of runnable examples that illustrate various Rust concepts and standard libraries. Usually consumed alongside "the book", gives a more interactive experience to learning Rust basics
 - [The Rust Reference](https://doc.rust-lang.org/reference/introduction.html): a book that serves as a reference to what is available in stable Rust.
 - [The Rust Standard Library Documentation](https://doc.rust-lang.org/std/index.html)

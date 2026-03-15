@@ -10,4 +10,5 @@
     - [Build the Project](1_project_setup/build.md)
 
 - [Basics](2_basics/intro.md)
-    - [Hello, Rust World!](2_basics/hello_rust.md)
+    - [Hello, Binary Crate!](2_basics/hello_bin.md)
+    - [Hello, Library Crate!](2_basics/hello_lib.md)
