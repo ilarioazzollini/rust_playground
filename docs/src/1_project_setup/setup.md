@@ -1,39 +1,10 @@
 # Development Environment Setup
 
-This page provides a step-by-step guide to setting up the development environment required to follow along with the examples in this book. The setup relies on widely used, free tools that work seamlessly on Windows, Linux, and macOS.
-
-## 1. Prerequisites
-
-The following tools are required:
-
-- [Git](https://git-scm.com/)
-- [Docker](https://www.docker.com/)
-- [VS Code](https://code.visualstudio.com/) (optional, but recommended for a fully integrated development environment)
-
-After installing these tools (and ensuring they are available in your system `PATH`), open a terminal or PowerShell and run the following commands:
-
-```bash
-git --version
-docker --version
-code --version
-```
-
-If the installation was successful, each command should print the installed version without errors.
-
-Next, install (or update) the required VS Code extensions:
-
-```bash
-code --force --install-extension ms-azuretools.vscode-containers
-code --force --install-extension ms-vscode-remote.remote-containers
-```
-
-## 2. Development Environment Overview
-
 As mentioned earlier, we will rely on Docker to containerize our development environment. This approach ensures that everyone works in the same reproducible environment, regardless of their host operating system.
 
-The machine on which Docker is installed—and from which we build Docker images and run Docker containers—will be referred to as the *host PC*. Regardless of the host PC's operating system, all development work in this book will take place inside an **Ubuntu 24.04 Docker container**.
+The machine on which Docker is installed — and from which we build Docker images and run Docker containers — will be referred to as the *host PC*. Regardless of the host PC's operating system, all development work in this book will take place inside an **Ubuntu Docker container**.
 
-### 2.1 Clone the repository
+## 1. Clone the repository
 
 To get started, open a terminal and navigate to the directory where you want to clone this repository, then run:
 
@@ -44,7 +15,7 @@ cd rust_playground
 
 >  From this point on, **all terminal commands in this guide should be executed from the root directory of this repository unless otherwise specified**.
 
-### 2.2 Build the Docker container image
+## 2. Build the Docker container image
 
 Now, we can build a new Docker container image by running:
 
@@ -58,7 +29,9 @@ If the build completes successfully, the image should appear in the list of avai
 docker image ls
 ```
 
-### 2.3 Run a Docker container
+If you want more details about this image, you can refer to the file [`rust_playground/docker/Dockerfile`](https://github.com/ilarioazzollini/rust_playground/blob/main/docker/Dockerfile)
+
+## 3. Run a Docker container
 
 Next, run a container from the image we just built:
 
@@ -105,17 +78,24 @@ exit
 
 > At this point, the development environment is fully functional and we can start writing and running Rust code.
 
-## 3. Development using VS Code with Dev Containers
+## 4. VS Code with Dev Containers
 
 A fully integrated development setup can be achieved using VS Code and the Dev Containers extension.
 
-First, open a terminal and navigate to the root directory of the `rust_playground` repository:
+First of all, we need to open a terminal and install (or update) the required VS Code extensions:
+
+```bash
+code --force --install-extension ms-azuretools.vscode-containers
+code --force --install-extension ms-vscode-remote.remote-containers
+```
+
+Then, navigate to the root directory of the `rust_playground` repository:
 
 ```bash
 cd <rust_playground>
 ```
 
-Then open the project in VS Code:
+And open the project in VS Code:
 
 ```bash
 code .
@@ -129,7 +109,7 @@ Dev Containers: Reopen in Container
 
 and select it.
 
-VS Code will close the current window, start a `rust_playground:latest` Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file `rust_playground/.devcontainer/devcontainer.json`.
+VS Code will close the current window, start a `rust_playground:latest` Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file [`rust_playground/.devcontainer/devcontainer.json`](https://github.com/ilarioazzollini/rust_playground/blob/main/.devcontainer/devcontainer.json).
 
 This setup provides useful development features such as:
 

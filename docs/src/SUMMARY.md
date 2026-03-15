@@ -4,7 +4,10 @@
 
 [Why Rust](why.md)
 
-[Dev Environment Setup](setup.md)
+- [Project Setup](1_project_setup/intro.md)
+    - [Prerequisites](1_project_setup/prerequisites.md)
+    - [Dev Environment Setup](1_project_setup/setup.md)
+    - [Build the Project](1_project_setup/build.md)
 
-- [The Book](the_book/intro.md)
-    - [Hello, Rust World!](the_book/ch01_00_hello_rust.md)
+- [Basics](2_basics/intro.md)
+    - [Hello, Rust World!](2_basics/hello_rust.md)

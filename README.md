@@ -112,7 +112,7 @@ cargo llvm-cov --workspace --lib --all-features
 Generate and immediately open the documentation
 
 ```bash
-cargo doc --workspace --no-deps
+cargo doc --workspace --no-deps --open
 ```
 
 ### 3.6 The markdown book
@@ -135,6 +135,8 @@ python3 -m http.server 8080 -d /root/rust_playground/docs/book
 ```
 
 Or simply manually open the file `/root/rust_playground/docs/book/index.html`.
+
+I am taking inspiration from [The Rust Programming Language Book](https://github.com/rust-lang/book/tree/main).
 
 ## 4. The Rust Language Book
 
