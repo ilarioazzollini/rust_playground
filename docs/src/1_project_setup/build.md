@@ -1,10 +1,10 @@
 # Build the Project
 
-Regardless of whether you are using VS Code with Dev Containers or running `docker run` manually, from this section onward we assume that you are working inside a terminal session running in the Docker container (as previously explained in [Development Environment Setup](./setup.md)).
+> *Prerequisite: Regardless of whether you are using VS Code with Dev Containers or running `docker run` manually, from this section onward we assume that you are working inside a terminal session running in the Docker container we previously setup in [Development Environment Setup](./setup.md).*
 
 To manage projects of arbitrary size, this repository is organized as a [Cargo workspace](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html). A workspace makes it easier to develop and maintain multiple related crates within a single project. This approach allows multiple binaries, libraries, examples, and experiments to coexist in a single repository while sharing dependencies and build configuration.
 
-In this repository, the `rs-ws` directory acts as the workspace root and contains all the crates that we will develop throughout this book.
+In this repository, the [`rust_playground/rs-ws`](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws) directory acts as the workspace root and contains all the crates that we will develop throughout this book.
 
 ## Build
 

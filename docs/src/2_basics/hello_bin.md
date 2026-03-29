@@ -1,6 +1,8 @@
 # Hello, Binary Crate!
 
-*Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in [Development Environment Setup](../1_project_setup/setup.md)).*
+> *Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in [Development Environment Setup](../1_project_setup/setup.md)).*
+>
+> *Source code at [`rust_playground/rs-ws/hello_world`](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/hello_world)*
 
 Here we are, ready to say our "Hello, World!" in Rust. In order to do so, we will create our first *binary crate*. A binary crate produces an executable program.
 
@@ -11,7 +13,7 @@ cd rs-ws
 cargo new hello_world --bin
 ```
 
-resulting in the creation of a crate having only one source file `rs-ws/hello_world/src/main.rs`:
+resulting in the creation of a crate having only one source file [`rust_playground/rs-ws/hello_world/src/main.rs`](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/hello_world/src/main.rs):
 
 ```rust
 fn main() {

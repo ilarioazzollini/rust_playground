@@ -1,8 +1,10 @@
 # Why Rust
 
+*This page is work in progress... Atm, it only contains some useful references*
+
 Why should you at least consider Rust? And why not?
 
-TBD:
+Already watched and suggested for other interested people (in no specific order):
 - [Jon Gjenset Explains: Interview by Vitaly Bragilevsky, Head of Rust Ecosystem @ JetBrains](https://www.youtube.com/watch?v=nOSxuaDgl3s)
 - [When to Choose Rust • Tim McNamara • YOW! 2022](https://www.youtube.com/watch?v=wClDbLGLjxw)
 - [Considering Rust - Jon Gjenset](https://www.youtube.com/watch?v=DnT-LUQgc7s)

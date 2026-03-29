@@ -12,3 +12,4 @@
 - [Basics](2_basics/intro.md)
     - [Hello, Binary Crate!](2_basics/hello_bin.md)
     - [Hello, Library Crate!](2_basics/hello_lib.md)
+    - [Guessing Game](2_basics/guessing_game.md)

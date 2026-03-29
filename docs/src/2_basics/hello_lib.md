@@ -1,6 +1,8 @@
 # Hello, Library Crate!
 
-*Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in [Development Environment Setup](../1_project_setup/setup.md)).*
+> *Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in [Development Environment Setup](../1_project_setup/setup.md)).*
+>
+> *Source code at [`rust_playground/rs-ws/my_lib](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_lib)*
 
 A *library crate* provides reusable functionality that can be shared across multiple projects or binaries.
 
@@ -84,6 +86,8 @@ and read them by opening a browser and navigating to [http://localhost:8080/my_l
 
 ## Create a binary crate depending on this library
 
+> *Source code at [`rust_playground/rs-ws/my_app](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_app)*
+
 Now, we can create a new binary crate that depends on the library crate we just created. It is really easy to do so in a workspace.
 
 Let us start by creating `my_app`:
@@ -93,14 +97,14 @@ cd rs-ws
 cargo new my_app --bin
 ```
 
-Then, navigate to its `Cargo.toml` file (at `rs-ws/my_app/Cargo.toml`), and under the `dependencies` section, add a dependency on `my_lib` as follows:
+Then, navigate to its `Cargo.toml` file (at [`rust_playground/rs-ws/my_app/Cargo.toml](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_app/Cargo.toml)), and under the `dependencies` section, add a dependency on `my_lib` as follows:
 
 ```toml
 [dependencies]
 my_lib = { path = "../my_lib" }
 ```
 
-Now, we can modify the `rs-ws/my_app/src/main.src` file as follows:
+Now, we can modify the [`rust_playground/rs-ws/my_app/src/main.rs](https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_app/src/main.rs) file as follows:
 
 ```rust,noplayground
 fn main() {
