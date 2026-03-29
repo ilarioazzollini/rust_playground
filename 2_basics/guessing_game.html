@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Dev Environment Setup - Rust Playground</title>
+        <title>Guessing Game - Rust Playground</title>
 
 
         <!-- Custom HTML head -->
@@ -176,91 +176,39 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="development-environment-setup"><a class="header" href="#development-environment-setup">Development Environment Setup</a></h1>
-<p>As mentioned earlier, we will rely on Docker to containerize our development environment. This approach ensures that everyone works in the same reproducible environment, regardless of their host operating system.</p>
-<p>The machine on which Docker is installed — and from which we build Docker images and run Docker containers — will be referred to as the <em>host PC</em>. Regardless of the host PC’s operating system, all development work in this book will take place inside an <strong>Ubuntu Docker container</strong>.</p>
-<h2 id="1-clone-the-repository"><a class="header" href="#1-clone-the-repository">1. Clone the repository</a></h2>
-<p>To get started, open a terminal and navigate to the directory where you want to clone this repository, then run:</p>
-<pre><code class="language-bash">git clone https://github.com/ilarioazzollini/rust_playground.git
-cd rust_playground
+                        <h1 id="guessing-game"><a class="header" href="#guessing-game">Guessing Game</a></h1>
+<p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="../1_project_setup/setup.html">Development Environment Setup</a>).</em></p>
+<p>Some parts of the program, as well as some parts of this doc page, are taken from <a href="https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html">The Rust Book</a>.</p>
+<h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
+<p>First of all, we create a new binary crate:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new guessing_game --bin
 </code></pre>
-<blockquote>
-<p>From this point on, <strong>all terminal commands in this guide should be executed from the root directory of this repository unless otherwise specified</strong>.</p>
-</blockquote>
-<h2 id="2-build-the-docker-container-image"><a class="header" href="#2-build-the-docker-container-image">2. Build the Docker container image</a></h2>
-<p>Now, we can build a new Docker container image by running:</p>
-<pre><code class="language-bash">docker build -f docker/Dockerfile -t rust_playground:latest .
+<p>You can find the code in the source file <code>rs-ws/guessing_game/src/main.rs</code>.</p>
+<p>This app will need a dependency on the <a href="https://crates.io/crates/rand">rand crate</a>. In order to add the dependency, we can either manually modify the <code>rs-ws/guessing_game/Cargo.toml</code> file or use <a href="https://doc.rust-lang.org/cargo/commands/cargo-add.html">cargo add</a> (and maybe update them after a while by means of <a href="https://doc.rust-lang.org/cargo/commands/cargo-update.html">cargo update</a>)</p>
+<p>In this case, let us follow the Rust book and directly modify the toml file:</p>
+<pre><code class="language-toml">[package]
+name = "guessing_game"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8.5"
 </code></pre>
-<p>If the build completes successfully, the image should appear in the list of available images:</p>
-<pre><code class="language-bash">docker image ls
+<p>and then, the next time we are going to build the project, Cargo will automatically take care of it.</p>
+<h2 id="build-and-run"><a class="header" href="#build-and-run">Build and Run</a></h2>
+<p>We can build and run the <code>guessing_game</code> package by:</p>
+<pre><code class="language-bash">cargo run --package guessing_game --release
 </code></pre>
-<p>If you want more details about this image, you can refer to the file <a href="https://github.com/ilarioazzollini/rust_playground/blob/main/docker/Dockerfile"><code>rust_playground/docker/Dockerfile</code></a></p>
-<h2 id="3-run-a-docker-container"><a class="header" href="#3-run-a-docker-container">3. Run a Docker container</a></h2>
-<p>Next, run a container from the image we just built:</p>
-<pre><code class="language-bash">docker run -it --rm --privileged --network=host -v .:/root/rust_playground -w /root/rust_playground --name rust-dev-cont rust_playground:latest bash
-</code></pre>
-<p>You should now be inside a terminal session running in the Docker container.</p>
-<p>If you want to check the container’s status, open another terminal on the host PC and run:</p>
-<pre><code class="language-bash">docker container ls
-</code></pre>
-<p>You should see a running container named <code>rust-dev-cont</code>.</p>
-<p>Now return to the terminal inside the container. If everything worked correctly, your current working directory should be <code>/root/rust_playground</code>. You can verify this by running:</p>
-<pre><code class="language-bash">pwd
-</code></pre>
-<p>You should also see the contents of the rust_playground repository by running:</p>
-<pre><code class="language-bash">ls
-</code></pre>
-<p>This works because the repository directory on the host PC is mounted inside the container using the volume flag <code>-v .:/root/rust_playground</code>. This means the folder is shared between the host and the container.</p>
-<p>We can also verify that the Rust toolchain is correctly installed inside the container:</p>
-<pre><code class="language-bash">cargo --version
-rustc --version
-</code></pre>
-<p>When you are done, you can exit the container by running:</p>
-<pre><code class="language-bash">exit
-</code></pre>
-<blockquote>
-<p>At this point, the development environment is fully functional and we can start writing and running Rust code.</p>
-</blockquote>
-<h2 id="4-vs-code-with-dev-containers"><a class="header" href="#4-vs-code-with-dev-containers">4. VS Code with Dev Containers</a></h2>
-<p>A fully integrated development setup can be achieved using VS Code and the Dev Containers extension.</p>
-<p>First of all, we need to open a terminal and install (or update) the required VS Code extensions:</p>
-<pre><code class="language-bash">code --force --install-extension ms-azuretools.vscode-containers
-code --force --install-extension ms-vscode-remote.remote-containers
-</code></pre>
-<p>Then, navigate to the root directory of the <code>rust_playground</code> repository:</p>
-<pre><code class="language-bash">cd &lt;rust_playground&gt;
-</code></pre>
-<p>And open the project in VS Code:</p>
-<pre><code class="language-bash">code .
-</code></pre>
-<p>Open the Command Palette (<code>Ctrl+Shift+P</code>, or <code>Cmd+Shift+P</code> on Mac OS), type</p>
-<pre><code>Dev Containers: Reopen in Container
-</code></pre>
-<p>and select it.</p>
-<p>VS Code will close the current window, start a <code>rust_playground:latest</code> Docker container, and reopen the project inside the container. During this process, VS Code will also install the extensions defined in the file <a href="https://github.com/ilarioazzollini/rust_playground/blob/main/.devcontainer/devcontainer.json"><code>rust_playground/.devcontainer/devcontainer.json</code></a>.</p>
-<p>This setup provides useful development features such as:</p>
-<ul>
-<li>IntelliSense</li>
-<li>inline error reporting</li>
-<li>automatic formatting</li>
-<li>integrated debugging tools</li>
-</ul>
-<p>Any terminal opened from this VS Code instance will automatically run inside the container.</p>
-<blockquote>
-<p>If you modify the Docker image and rebuild it, remember to also rebuild the Dev Container. In that case, use <code>Dev Containers: Rebuild Without Cache and Reopen in Container</code> from the Command Palette.</p>
-</blockquote>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../1_project_setup/prerequisites.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../2_basics/hello_lib.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../1_project_setup/build.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -268,13 +216,10 @@ code --force --install-extension ms-vscode-remote.remote-containers
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../1_project_setup/prerequisites.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../2_basics/hello_lib.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../1_project_setup/build.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
-                    </a>
             </nav>
 
         </div>

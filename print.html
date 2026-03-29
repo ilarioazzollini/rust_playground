@@ -38,10 +38,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-96bf5e71.js";
+            window.path_to_searchindex_js = "searchindex-bc478515.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-639ae100.js"></script>
+        <script src="toc-eb303681.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -501,6 +501,31 @@ my_lib = { path = "../my_lib" }
 <li><a href="https://doc.rust-lang.org/book/ch14-02-publishing-to-crates-io.html#making-useful-documentation-comments">Making Useful Documentation Comments - The Book</a></li>
 <li><a href="https://doc.rust-lang.org/rustdoc/references.html">The rustdoc book</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="guessing-game"><a class="header" href="#guessing-game">Guessing Game</a></h1>
+<p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
+<p>Some parts of the program, as well as some parts of this doc page, are taken from <a href="https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html">The Rust Book</a>.</p>
+<h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
+<p>First of all, we create a new binary crate:</p>
+<pre><code class="language-bash">cd rs-ws
+cargo new guessing_game --bin
+</code></pre>
+<p>You can find the code in the source file <code>rs-ws/guessing_game/src/main.rs</code>.</p>
+<p>This app will need a dependency on the <a href="https://crates.io/crates/rand">rand crate</a>. In order to add the dependency, we can either manually modify the <code>rs-ws/guessing_game/Cargo.toml</code> file or use <a href="https://doc.rust-lang.org/cargo/commands/cargo-add.html">cargo add</a> (and maybe update them after a while by means of <a href="https://doc.rust-lang.org/cargo/commands/cargo-update.html">cargo update</a>)</p>
+<p>In this case, let us follow the Rust book and directly modify the toml file:</p>
+<pre><code class="language-toml">[package]
+name = "guessing_game"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8.5"
+</code></pre>
+<p>and then, the next time we are going to build the project, Cargo will automatically take care of it.</p>
+<h2 id="build-and-run"><a class="header" href="#build-and-run">Build and Run</a></h2>
+<p>We can build and run the <code>guessing_game</code> package by:</p>
+<pre><code class="language-bash">cargo run --package guessing_game --release
+</code></pre>
 
                     </main>
 
