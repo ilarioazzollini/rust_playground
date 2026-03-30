@@ -38,7 +38,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bc478515.js";
+            window.path_to_searchindex_js = "searchindex-9f0630d1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-eb303681.js"></script>
@@ -180,12 +180,13 @@
                         <h1 id="my-rust-playground"><a class="header" href="#my-rust-playground">My Rust Playground</a></h1>
 <p><em>by Ilario A. Azzollini</em></p>
 <p>As a researcher and an engineer — not a “pure software developer” (at least not by birth) — I see programming languages as tools. In my view, a language is always a means to an end.</p>
-<p>Because I work close to the development side of things, I care deeply about developer experience. Rust offers a powerful and well-designed ecosystem. The tools are reliable, consistent, and pleasant to use. They make it easier to write high-quality code and focus on the problem instead of fighting the language.</p>
+<p>Because I work close to the development side of things, I care deeply about developer experience. Rust offers a powerful and well-designed ecosystem. The tools are reliable and pleasant to use. They make it easier to write high-quality code and focus on the problem instead of fighting the language.</p>
 <p><a href="https://github.com/ilarioazzollini/rust_playground">This repository</a> is my Rust playground: a place where I collect what I study, experiment with new ideas, and explore concepts I want to understand more deeply.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="why-rust"><a class="header" href="#why-rust">Why Rust</a></h1>
+<p><em>This page is work in progress… Atm, it only contains some useful references</em></p>
 <p>Why should you at least consider Rust? And why not?</p>
-<p>TBD:</p>
+<p>Already watched and suggested for other interested people (in no specific order):</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=nOSxuaDgl3s">Jon Gjenset Explains: Interview by Vitaly Bragilevsky, Head of Rust Ecosystem @ JetBrains</a></li>
 <li><a href="https://www.youtube.com/watch?v=wClDbLGLjxw">When to Choose Rust • Tim McNamara • YOW! 2022</a></li>
@@ -321,9 +322,11 @@ code --force --install-extension ms-vscode-remote.remote-containers
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="build-the-project"><a class="header" href="#build-the-project">Build the Project</a></h1>
-<p>Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</p>
+<blockquote>
+<p><em>Prerequisite: Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container we previously setup in <a href="#development-environment-setup">Development Environment Setup</a>.</em></p>
+</blockquote>
 <p>To manage projects of arbitrary size, this repository is organized as a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. A workspace makes it easier to develop and maintain multiple related crates within a single project. This approach allows multiple binaries, libraries, examples, and experiments to coexist in a single repository while sharing dependencies and build configuration.</p>
-<p>In this repository, the <code>rs-ws</code> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
+<p>In this repository, the <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws"><code>rust_playground/rs-ws</code></a> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
 <h2 id="build"><a class="header" href="#build">Build</a></h2>
 <p>To check all crates in the workspace, run:</p>
 <pre><code class="language-bash">cargo check --workspace --all-targets
@@ -389,13 +392,16 @@ code --force --install-extension ms-vscode-remote.remote-containers
 <p>We will start with the creation of our first binary crate, followed by the creation of our first library crate, and then we will focus on Rust syntax by developing some basic applications.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hello-binary-crate"><a class="header" href="#hello-binary-crate">Hello, Binary Crate!</a></h1>
+<blockquote>
 <p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/hello_world"><code>rust_playground/rs-ws/hello_world</code></a></em></p>
+</blockquote>
 <p>Here we are, ready to say our “Hello, World!” in Rust. In order to do so, we will create our first <em>binary crate</em>. A binary crate produces an executable program.</p>
 <p>We can create our new binary crate inside our Cargo workspace by running the <a href="https://doc.rust-lang.org/cargo/commands/cargo-new.html">cargo new</a> command:</p>
 <pre><code class="language-bash">cd rs-ws
 cargo new hello_world --bin
 </code></pre>
-<p>resulting in the creation of a crate having only one source file <code>rs-ws/hello_world/src/main.rs</code>:</p>
+<p>resulting in the creation of a crate having only one source file <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/hello_world/src/main.rs"><code>rust_playground/rs-ws/hello_world/src/main.rs</code></a>:</p>
 <pre class="playground"><code class="language-rust">fn main() {
     println!("Hello, world!");
 }</code></pre>
@@ -419,7 +425,10 @@ cargo new hello_world --bin
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="hello-library-crate"><a class="header" href="#hello-library-crate">Hello, Library Crate!</a></h1>
+<blockquote>
 <p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_lib">`rust_playground/rs-ws/my_lib</a></em></p>
+</blockquote>
 <p>A <em>library crate</em> provides reusable functionality that can be shared across multiple projects or binaries.</p>
 <p>To create a new library crate, we can run:</p>
 <pre><code class="language-bash">cd rs-ws
@@ -470,6 +479,9 @@ mod tests {
 </code></pre>
 <p>and read them by opening a browser and navigating to <a href="http://localhost:8080/my_lib/index.html">http://localhost:8080/my_lib/index.html</a>.</p>
 <h2 id="create-a-binary-crate-depending-on-this-library"><a class="header" href="#create-a-binary-crate-depending-on-this-library">Create a binary crate depending on this library</a></h2>
+<blockquote>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_app">`rust_playground/rs-ws/my_app</a></em></p>
+</blockquote>
 <p>Now, we can create a new binary crate that depends on the library crate we just created. It is really easy to do so in a workspace.</p>
 <p>Let us start by creating <code>my_app</code>:</p>
 <pre><code class="language-bash">cd rs-ws
@@ -503,15 +515,18 @@ my_lib = { path = "../my_lib" }
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="guessing-game"><a class="header" href="#guessing-game">Guessing Game</a></h1>
+<blockquote>
 <p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="#development-environment-setup">Development Environment Setup</a>).</em></p>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/guessing_game">`rust_playground/rs-ws/guessing_game</a></em></p>
+</blockquote>
 <p>Some parts of the program, as well as some parts of this doc page, are taken from <a href="https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html">The Rust Book</a>.</p>
 <h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
 <p>First of all, we create a new binary crate:</p>
 <pre><code class="language-bash">cd rs-ws
 cargo new guessing_game --bin
 </code></pre>
-<p>You can find the code in the source file <code>rs-ws/guessing_game/src/main.rs</code>.</p>
-<p>This app will need a dependency on the <a href="https://crates.io/crates/rand">rand crate</a>. In order to add the dependency, we can either manually modify the <code>rs-ws/guessing_game/Cargo.toml</code> file or use <a href="https://doc.rust-lang.org/cargo/commands/cargo-add.html">cargo add</a> (and maybe update them after a while by means of <a href="https://doc.rust-lang.org/cargo/commands/cargo-update.html">cargo update</a>)</p>
+<p>You can find the code in the source file <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/guessing_game/src/main.rs"><code>rust_playground/rs-ws/guessing_game/src/main.rs</code></a>.</p>
+<p>This app will need a dependency on the <a href="https://crates.io/crates/rand">rand crate</a>. In order to add the dependency, we can either manually modify the <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/guessing_game/Cargo.toml"><code>rust_playground/rs-ws/guessing_game/Cargo.toml</code></a> file or use <a href="https://doc.rust-lang.org/cargo/commands/cargo-add.html">cargo add</a> (and maybe update them after a while by means of <a href="https://doc.rust-lang.org/cargo/commands/cargo-update.html">cargo update</a>)</p>
 <p>In this case, let us follow the Rust book and directly modify the toml file:</p>
 <pre><code class="language-toml">[package]
 name = "guessing_game"
@@ -525,6 +540,32 @@ rand = "0.8.5"
 <h2 id="build-and-run"><a class="header" href="#build-and-run">Build and Run</a></h2>
 <p>We can build and run the <code>guessing_game</code> package by:</p>
 <pre><code class="language-bash">cargo run --package guessing_game --release
+</code></pre>
+<p>And we can play the guessing game, which will look like this:</p>
+<pre><code class="language-bash">-----------------------------
+Welcome to the Guessing Game!
+
+Rules:
+- I have generated a random integer number within the range of 0 to 100 inclusive
+- You have 10 attempts to guess the number
+- For each attempt, I'll tell you whether your guess is lower, higher, or the exact number
+-----------------------------
+
+Attempt #1. Please input your guess and press &lt;Enter&gt;.
+50
+LOWER!
+
+Attempt #2. Please input your guess and press &lt;Enter&gt;.
+80
+LOWER!
+
+Attempt #3. Please input your guess and press &lt;Enter&gt;.
+90
+YOU WON!
+
+-------------------
+End of the program.
+-------------------
 </code></pre>
 
                     </main>

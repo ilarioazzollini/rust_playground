@@ -37,7 +37,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-bc478515.js";
+            window.path_to_searchindex_js = "../searchindex-9f0630d1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-eb303681.js"></script>
@@ -177,9 +177,11 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="build-the-project"><a class="header" href="#build-the-project">Build the Project</a></h1>
-<p>Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container (as previously explained in <a href="./setup.html">Development Environment Setup</a>).</p>
+<blockquote>
+<p><em>Prerequisite: Regardless of whether you are using VS Code with Dev Containers or running <code>docker run</code> manually, from this section onward we assume that you are working inside a terminal session running in the Docker container we previously setup in <a href="./setup.html">Development Environment Setup</a>.</em></p>
+</blockquote>
 <p>To manage projects of arbitrary size, this repository is organized as a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. A workspace makes it easier to develop and maintain multiple related crates within a single project. This approach allows multiple binaries, libraries, examples, and experiments to coexist in a single repository while sharing dependencies and build configuration.</p>
-<p>In this repository, the <code>rs-ws</code> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
+<p>In this repository, the <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws"><code>rust_playground/rs-ws</code></a> directory acts as the workspace root and contains all the crates that we will develop throughout this book.</p>
 <h2 id="build"><a class="header" href="#build">Build</a></h2>
 <p>To check all crates in the workspace, run:</p>
 <pre><code class="language-bash">cargo check --workspace --all-targets

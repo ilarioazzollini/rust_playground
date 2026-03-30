@@ -37,7 +37,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-bc478515.js";
+            window.path_to_searchindex_js = "../searchindex-9f0630d1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-eb303681.js"></script>
@@ -177,13 +177,16 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="hello-binary-crate"><a class="header" href="#hello-binary-crate">Hello, Binary Crate!</a></h1>
+<blockquote>
 <p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="../1_project_setup/setup.html">Development Environment Setup</a>).</em></p>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/hello_world"><code>rust_playground/rs-ws/hello_world</code></a></em></p>
+</blockquote>
 <p>Here we are, ready to say our “Hello, World!” in Rust. In order to do so, we will create our first <em>binary crate</em>. A binary crate produces an executable program.</p>
 <p>We can create our new binary crate inside our Cargo workspace by running the <a href="https://doc.rust-lang.org/cargo/commands/cargo-new.html">cargo new</a> command:</p>
 <pre><code class="language-bash">cd rs-ws
 cargo new hello_world --bin
 </code></pre>
-<p>resulting in the creation of a crate having only one source file <code>rs-ws/hello_world/src/main.rs</code>:</p>
+<p>resulting in the creation of a crate having only one source file <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/hello_world/src/main.rs"><code>rust_playground/rs-ws/hello_world/src/main.rs</code></a>:</p>
 <pre class="playground"><code class="language-rust">fn main() {
     println!("Hello, world!");
 }</code></pre>

@@ -37,7 +37,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-bc478515.js";
+            window.path_to_searchindex_js = "../searchindex-9f0630d1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-eb303681.js"></script>
@@ -177,7 +177,10 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="hello-library-crate"><a class="header" href="#hello-library-crate">Hello, Library Crate!</a></h1>
+<blockquote>
 <p><em>Prerequisite: As always, we assume that we are working inside a terminal session running in our usual Docker container (as previously explained in <a href="../1_project_setup/setup.html">Development Environment Setup</a>).</em></p>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_lib">`rust_playground/rs-ws/my_lib</a></em></p>
+</blockquote>
 <p>A <em>library crate</em> provides reusable functionality that can be shared across multiple projects or binaries.</p>
 <p>To create a new library crate, we can run:</p>
 <pre><code class="language-bash">cd rs-ws
@@ -228,6 +231,9 @@ mod tests {
 </code></pre>
 <p>and read them by opening a browser and navigating to <a href="http://localhost:8080/my_lib/index.html">http://localhost:8080/my_lib/index.html</a>.</p>
 <h2 id="create-a-binary-crate-depending-on-this-library"><a class="header" href="#create-a-binary-crate-depending-on-this-library">Create a binary crate depending on this library</a></h2>
+<blockquote>
+<p><em>Source code at <a href="https://github.com/ilarioazzollini/rust_playground/tree/main/rs-ws/my_app">`rust_playground/rs-ws/my_app</a></em></p>
+</blockquote>
 <p>Now, we can create a new binary crate that depends on the library crate we just created. It is really easy to do so in a workspace.</p>
 <p>Let us start by creating <code>my_app</code>:</p>
 <pre><code class="language-bash">cd rs-ws
