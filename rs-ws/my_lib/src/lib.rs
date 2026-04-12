@@ -15,6 +15,13 @@
 /// Last but not least, it is good practice to include at least one code example
 /// that users can copy/paste to try it.
 ///
+/// # Parameters
+/// - `left`: A `u64` number
+/// - `right`: A `u64` number
+///
+/// # Returns
+/// A `u64` number that is the sum of left and right
+///
 /// # Panics
 /// The add function never panics. It's strong like that.
 ///
